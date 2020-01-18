@@ -4,6 +4,7 @@
   "description": "",
   "private": true,
   "main": "app.js",
+  "web": "nodemon --exec babel-node ./bin/start",
   "scripts": {
     "start": "nodemon --exec babel-node ./bin/start",
     "test": "echo \"Error: test not specified\" && exit 1"
