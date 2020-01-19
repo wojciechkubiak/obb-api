@@ -1,19 +1,24 @@
-import 'dotenv/config';
-const pool = require('../utility/connection')
-const { Router } = require('express');
+const path = require('path');
 
-const router = Router();
+const express = require('express');
 
+//Place for controllers and their import
+const PensCtrl = require('../ctrl/pensCtrl');
 
+const router = express.Router();
 
-/* GET index page. */
-router.get('/', (req, res, next) => {
-  pool.query('SELECT * FROM pigs',
-  (error, results) => {
-      if(error) {throw error}
-      res.status(200).json(results.rows)
-  })
-})
+//GlobalMeasures
+
+//Pens
+router.get('/pens', PensCtrl.getPens);
+
+//PenMeasures
+
+//Forage
+
+//Pigs
+
+//Exams
 
 
 

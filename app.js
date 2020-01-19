@@ -5,7 +5,7 @@ const logger = require('morgan');
 const path = require('path');
 const sequelize = require('./utility/connection');
 
-//const indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
 
 const app = express();
 
@@ -16,23 +16,18 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-import './models/pens';
+const GlobalMeasures = require('./models/global');
+const Pens = require('./models/pens');
+const Pigs = require('./models/pigs');
 
-//app.use('/', indexRouter);
+Pens.hasMany(Pigs);
+ 
+app.use(indexRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(httpErrors(404));
 });
-
-sequelize.sync().then(result => {
-  console.log(result);
-  app.listen(3001);
-}).catch(error => {
-  console.log(error);
-}).finally(() => {
-  sequelize.close();
-})
 
 // error handler
 app.use((err, req, res, next) => {
@@ -44,5 +39,14 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.json(err);
 });
+
+sequelize.sync()
+  .then(result => {
+  console.log(result);
+  //app.listen(3001);
+  })
+  .catch(error => {
+  console.log(error);
+  });
 
 module.exports = app;

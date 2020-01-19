@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+
 const sequelize = require('../utility/connection');
 
 const Pens = sequelize.define('pens', {
@@ -11,6 +12,12 @@ const Pens = sequelize.define('pens', {
     size: {
         type:Sequelize.INTEGER,
         allowNull: false
+    },
+    createdAt: {
+        type: Sequelize.DATE
+    },
+    updatedAt: {
+        type: Sequelize.DATE
     }
 });
 
