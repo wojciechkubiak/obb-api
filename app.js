@@ -3,8 +3,9 @@ const express = require('express');
 const httpErrors = require('http-errors');
 const logger = require('morgan');
 const path = require('path');
+const sequelize = require('./utility/connection');
 
-const indexRouter = require('./routes/index');
+//const indexRouter = require('./routes/index');
 
 const app = express();
 
@@ -15,12 +16,23 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+import './models/pens';
+
+//app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(httpErrors(404));
 });
+
+sequelize.sync().then(result => {
+  console.log(result);
+  app.listen(3001);
+}).catch(error => {
+  console.log(error);
+}).finally(() => {
+  sequelize.close();
+})
 
 // error handler
 app.use((err, req, res, next) => {
