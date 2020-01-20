@@ -19,23 +19,23 @@ const GlobalMeasures = sequelize.define('global_measures', {
     },
     nh_three: {
         type: Sequelize.SMALLINT,
-        allowNull: true
+        allowNull: false
     },
     h_two_s: {
         type: Sequelize.SMALLINT,
-        allowNull: true
+        allowNull: false
     },
     co_two: {
         type: Sequelize.SMALLINT,
-        allowNull: true
+        allowNull: false
     },
     temperature: {
         type: Sequelize.SMALLINT,
-        allowNull: true
+        allowNull: false
     },
     wetness: {
         type: Sequelize.INTEGER,
-        allowNull: true
+        allowNull: false
     },
     createdAt: {
         type: Sequelize.DATE

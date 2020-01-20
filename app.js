@@ -18,10 +18,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const GlobalMeasures = require('./models/global');
 const Pens = require('./models/pens');
+const PenMeasures = require('./models/penMeasures');
+const Forage = require('./models/forage');
 const Pigs = require('./models/pigs');
+const Exams = require('./models/exams');
 
 Pens.hasMany(Pigs);
- 
+Pens.hasMany(PenMeasures);
+Pens.hasMany(Forage);
+Pigs.hasMany(Exams);
+
 app.use(indexRouter);
 
 // catch 404 and forward to error handler
