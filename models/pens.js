@@ -13,8 +13,12 @@ const Pens = sequelize.define('pens', {
         type:Sequelize.INTEGER,
         allowNull: false
     },
+    isolated: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+    },
     createdAt: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
     },
     updatedAt: {
         type: Sequelize.DATE

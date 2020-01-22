@@ -30,15 +30,15 @@ const Pigs = sequelize.define('pigs', {
     },
     pig_sale_date: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true
     },
     pig_selling_cost: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: true
     },
     pig_death_date: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true
     },
     createdAt: {
         type: Sequelize.DATE

@@ -1,5 +1,11 @@
 const Pens = require('../models/pens');
 
+
+/*
+ * GET
+ */
+
+// All pens
 exports.getPens = (require, result, next) => {
     Pens.findAll()
         .then(pens => {
@@ -9,3 +15,11 @@ exports.getPens = (require, result, next) => {
             console.log(error);
         })
 }
+
+/*
+ * PUT
+ */
+
+// TODO: Set to isolated
+
+// TODO: Unset isolation
