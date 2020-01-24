@@ -27,7 +27,7 @@ router.get('/forage', ForageCtrl.getForageData)
 //Pigs
 router.get('/pigs', PigsCtrl.getPigs);
 router.get('/active-pigs/:id', PigsCtrl.getActivePigs);
-router.get('/out-pigs/:id', PigsCtrl.getOutPigs);
+router.get('/out-pigs/', PigsCtrl.getOutPigs);
 router.post('/add-pig', PigsCtrl.postAddPig);
 //router.post('/edit-pig/:id', PigsCtrl.postEditPigId);
 //Exams
