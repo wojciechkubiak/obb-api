@@ -25,8 +25,9 @@ router.get('/measures', PenMeasuresCtrl.getPenMeasures )
 router.get('/forage', ForageCtrl.getForageData)
 
 //Pigs
-router.get('/pigs', PigsCtrl.getPigs)
-
+router.get('/pigs', PigsCtrl.getPigs);
+router.post('/add-pig', PigsCtrl.postAddPig);
+//router.post('/edit-pig/:id', PigsCtrl.postEditPigId);
 //Exams
 router.get('/exams', ExamsCtrl.getExam)
 
