@@ -1,5 +1,5 @@
 const Pigs = require('../models/pigs');
-
+const { Op } = require('sequelize');
 /*
  * GET
  */
@@ -15,6 +15,8 @@ exports.getPigs = (require, result, next) => {
         })
 }
 
+// Add OR to out pigs and active pigs
+
 // TODO: All (where (selling_price || death_date) != null)
 exports.getOutPigs = (require, result, next) => {
     const id = parseInt(require.params.id);
@@ -22,8 +24,8 @@ exports.getOutPigs = (require, result, next) => {
     Pigs.findAll({
             where: {
                 id_pen: id,
-                pig_selling_cost: !null,
-                pig_death_date: !null
+                pig_selling_cost: !null, // fails
+                pig_death_date: !null // fails
             }
         })
         .then(pigs => {
@@ -41,8 +43,10 @@ exports.getActivePigs = (require, result, next) => {
     Pigs.findAll({
             where: {
                 id_pen: id,
-                pig_selling_cost: null,
-                pig_death_date: null
+                [Op.and]: [
+                    {pig_selling_cost: null},
+                    {pig_death_date: null}
+                ]
             }
         })
         .then(pigs => {
