@@ -16,8 +16,42 @@ exports.getPigs = (require, result, next) => {
 }
 
 // TODO: All (where (selling_price || death_date) != null)
+exports.getOutPigs = (require, result, next) => {
+    const id = parseInt(require.params.id);
+
+    Pigs.findAll({
+            where: {
+                id_pen: id,
+                pig_selling_cost: !null,
+                pig_death_date: !null
+            }
+        })
+        .then(pigs => {
+            result.status(200).json(pigs);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
 
 // TODO: By pen ID (where selling_price && death_date equals null)
+exports.getActivePigs = (require, result, next) => {
+    const id = parseInt(require.params.id);
+
+    Pigs.findAll({
+            where: {
+                id_pen: id,
+                pig_selling_cost: null,
+                pig_death_date: null
+            }
+        })
+        .then(pigs => {
+            result.status(200).json(pigs);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
 
 /*
  * POST
