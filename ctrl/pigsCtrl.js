@@ -1,10 +1,7 @@
 const Pigs = require("../models/pigs");
 const { Op } = require("sequelize");
-/*
- * GET
- */
 
-// TODO: All (where selling_price && death_date equals null)
+
 exports.getPigs = (require, result, next) => {
   Pigs.findAll()
     .then(pigs => {
@@ -15,13 +12,13 @@ exports.getPigs = (require, result, next) => {
     });
 };
 
-// Add OR to out pigs and active pigs
-
-// TODO: All (where (selling_price || death_date) != null)
 exports.getOutPigs = (require, result, next) => {
   Pigs.findAll({
     where: {
-      [Op.or]: [{pig_selling_cost: { [Op.ne]: null}} , {pig_death_date: { [Op.ne]: null}}]
+      [Op.or]: [
+        { pig_selling_cost: { [Op.ne]: null } },
+        { pig_death_date: { [Op.ne]: null } }
+      ]
     }
   })
     .then(pigs => {
@@ -32,7 +29,6 @@ exports.getOutPigs = (require, result, next) => {
     });
 };
 
-// TODO: By pen ID (where selling_price && death_date equals null)
 exports.getActivePigs = (require, result, next) => {
   const id = parseInt(require.params.id);
 
@@ -49,10 +45,6 @@ exports.getActivePigs = (require, result, next) => {
       console.log(error);
     });
 };
-
-/*
- * POST
- */
 
 exports.postAddPig = (require, result, next) => {
   const penID = require.body.id_pen;
@@ -76,27 +68,79 @@ exports.postAddPig = (require, result, next) => {
     });
 };
 
-/*
- * PUT
- */
+exports.postEditActivePig = (require, result, next) => {
+  const id = require.params.id;
 
-// TODO: Edit ID for pig and "sons"
-// exports.postEditPigId = (require, result, next) => {
+  const upPigPen = require.body.id_pen;
+  const upPigGender = require.body.pig_gender;
+  const upPigShoppingDate = require.body.pig_shopping_date;
+  const upPigShoppingPrice = require.body.pig_shopping_price;
 
-//     const id = require.params.id;
-//     const gender = require.body.pig_gender;
+  Pigs.update(
+    {
+      id_pen: upPigPen,
+      pig_gender: upPigGender,
+      pig_shopping_date: upPigShoppingDate,
+      pig_shopping_price: upPigShoppingPrice
+    },
+    {
+      where: {
+        id: id
+      }
+    }
+  )
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
 
-//     Product.findById(id)
-//         .then(pig => {
-//             pig.pig_gender = gender;
-//             return pig.save();
-//         })
-//         .then(result => {
-//             console.log(`Update completed: ${result}`);
-//         })
-//         .catch(error => {
-//             console.log(error);
-//         });
-// }
+exports.postEditSoldPig = (require, result, next) => {
+  const id = require.params.id;
 
-// TODO: Edit selling price, death date or isolated/deisolated for id
+  const upPigSaleDate = require.body.pig_sale_date;
+  const upPigSellingCost = require.body.pig_selling_cost;
+
+  Pigs.update(
+    {
+      pig_sale_date: upPigSaleDate,
+      pig_selling_cost: upPigSellingCost
+    },
+    {
+      where: {
+        id: id
+      }
+    }
+  )
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+exports.postEditDeadPig = (require, result, next) => {
+  const id = require.params.id;
+
+  const upPigDeathDate = require.body.pig_death_date;
+
+  Pigs.update(
+    {
+      pig_death_date: upPigDeathDate
+    },
+    {
+      where: {
+        id: id
+      }
+    }
+  )
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
