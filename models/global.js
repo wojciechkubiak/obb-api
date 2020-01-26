@@ -42,7 +42,7 @@ const GlobalMeasures = sequelize.define('global_measures', {
     },
     updatedAt: {
         type: Sequelize.DATE
-    }    
+    }
 });
 
 module.exports = GlobalMeasures;

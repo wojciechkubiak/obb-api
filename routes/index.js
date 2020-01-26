@@ -2,7 +2,6 @@ const path = require("path");
 
 const express = require("express");
 
-//Place for controllers and their import
 const GlobalMeasuresCtrl = require("../ctrl/globalCtrl");
 const PensCtrl = require("../ctrl/pensCtrl");
 const PenMeasuresCtrl = require("../ctrl/penMeasuresCtrl");
@@ -18,14 +17,19 @@ router.post("/add-global", GlobalMeasuresCtrl.postAddGlobalMeasure);
 router.put("/edit-global/:id", GlobalMeasuresCtrl.postEditGlobalMeasure);
 router.delete("/delete-global/:id", GlobalMeasuresCtrl.deleteGlobalMeasure);
 
-//Pens
 router.get("/pens", PensCtrl.getPens);
+router.get("/pens-isolated", PensCtrl.postEditPen);
 
-//PenMeasures
-router.get("/measures", PenMeasuresCtrl.getPenMeasures);
+router.get("/pen-measures", PenMeasuresCtrl.getAllPenMeasures);
+router.get("/pen-measures/:id", PenMeasuresCtrl.getPenMeasures);
+router.post("/add-pen-measure", PenMeasuresCtrl.postAddPenMeasure);
+router.put("/edit-pen-measure/:id", PenMeasuresCtrl.postEditPenMeasure);
+router.delete("/delete-pen-measure/:id", PenMeasuresCtrl.deletePenMeasure);
 
-//Forage
-router.get("/forage", ForageCtrl.getForageData);
+router.get("/forage/:id", ForageCtrl.getForageData);
+router.post("/add-forage", ForageCtrl.postAddForage);
+router.put("/edit-forage/:id", ForageCtrl.postEditForage);
+router.delete("/delete-forage/:id", ForageCtrl.deleteForage);
 
 router.get("/pigs", PigsCtrl.getPigs);
 router.get("/active-pigs/:id", PigsCtrl.getActivePigs);
@@ -35,7 +39,10 @@ router.put("/edit-pig/:id", PigsCtrl.postEditActivePig);
 router.put("/pig-sold/:id", PigsCtrl.postEditSoldPig);
 router.put("/pig-dead/:id", PigsCtrl.postEditDeadPig);
 
-//Exams
-router.get("/exams", ExamsCtrl.getExam);
+router.get("/exam/:id", ExamsCtrl.getExam);
+router.get("/exams-pig/:id", ExamsCtrl.getExamsForPig);
+router.post("/add-exam", ExamsCtrl.postAddExam);
+router.put("/edit-exam/:id", ExamsCtrl.postEditExam);
+router.delete("/delete-exam/:id", ExamsCtrl.deleteExam);
 
 module.exports = router;

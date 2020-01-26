@@ -1,25 +1,33 @@
 const Pens = require('../models/pens');
 
-
-/*
- * GET
- */
-
-// All pens
 exports.getPens = (require, result, next) => {
-    Pens.findAll()
-        .then(pens => {
-            result.status(200).json(pens);
-        })
-        .catch(error => {
-            console.log(error);
-        })
+  Pens.findAll()
+    .then(pens => {
+      result.status(200).json(pens);
+    })
+    .catch(error => {
+      console.log(error);
+    })
 }
 
-/*
- * PUT
- */
+exports.postEditPen = (require, result, next) => {
+  const id = parseInt(require.params.id);
 
-// TODO: Set to isolated
+  const upSize = require.body.size;
+  const upIsolated = require.body.isolated;
 
-// TODO: Unset isolation
+  Pens.update({
+      size: upSize,
+      isolated: upIsolated
+    }, {
+      where: {
+        id: id
+      }
+    })
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};

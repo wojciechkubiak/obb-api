@@ -10,7 +10,7 @@ const Pens = sequelize.define('pens', {
         primaryKey: true
     },
     size: {
-        type:Sequelize.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false
     },
     isolated: {

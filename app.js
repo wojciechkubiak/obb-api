@@ -11,7 +11,9 @@ const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -48,11 +50,11 @@ app.use((err, req, res, next) => {
 
 sequelize.sync()
   .then(result => {
-  console.log(result);
-  //app.listen(3001);
+    console.log(result);
+    //app.listen(3001);
   })
   .catch(error => {
-  console.log(error);
+    console.log(error);
   });
 
 module.exports = app;

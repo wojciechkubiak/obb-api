@@ -23,7 +23,7 @@ const Forage = sequelize.define('forage', {
     },
     fg_qty: {
         type: Sequelize.FLOAT(10),
-        allowNull: false  
+        allowNull: false
     },
     fg_price: {
         type: Sequelize.FLOAT(5),
@@ -32,7 +32,7 @@ const Forage = sequelize.define('forage', {
     creation_date: {
         type: Sequelize.DATE,
         allowNull: false
-    }, 
+    },
     producer: {
         type: Sequelize.TEXT,
         allowNull: false

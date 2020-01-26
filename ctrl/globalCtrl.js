@@ -12,9 +12,11 @@ exports.getGlobalMeasures = (require, result, next) => {
 
 exports.getLatestGlobalMeasures = (require, result, next) => {
   GlobalMeasures.findAll({
-    limit: 1,
-    order: [["createdAt", "DESC"]]
-  })
+      limit: 1,
+      order: [
+        ["createdAt", "DESC"]
+      ]
+    })
     .then(measures => {
       result.status(200).json(measures);
     })
@@ -33,14 +35,14 @@ exports.postAddGlobalMeasure = (require, result, next) => {
   const newWetness = require.body.wetness;
 
   GlobalMeasures.create({
-    measure_date: newMeasureDate,
-    measure_time: newMeasureTime,
-    nh_three: newNHThree,
-    h_two_s: newHTwoS,
-    co_two: newCOTwo,
-    temperature: newTemperature,
-    wetness: newWetness
-  })
+      measure_date: newMeasureDate,
+      measure_time: newMeasureTime,
+      nh_three: newNHThree,
+      h_two_s: newHTwoS,
+      co_two: newCOTwo,
+      temperature: newTemperature,
+      wetness: newWetness
+    })
     .then(out => {
       console.log(out);
     })
@@ -60,8 +62,7 @@ exports.postEditGlobalMeasure = (require, result, next) => {
   const upTemperature = require.body.temperature;
   const upWetness = require.body.wetness;
 
-  GlobalMeasures.update(
-    {
+  GlobalMeasures.update({
       measure_date: upMeasureDate,
       measure_time: upMeasureTime,
       nh_three: upNHThree,
@@ -69,13 +70,11 @@ exports.postEditGlobalMeasure = (require, result, next) => {
       co_two: upCOTwo,
       temperature: upTemperature,
       wetness: upWetness
-    },
-    {
+    }, {
       where: {
         id: id
       }
-    }
-  )
+    })
     .then(res => {
       console.log("Updated");
     })
@@ -88,10 +87,10 @@ exports.deleteGlobalMeasure = (require, result, next) => {
   const id = require.params.id;
 
   GlobalMeasures.destroy({
-    where: {
-      id: id
-    }
-  })
+      where: {
+        id: id
+      }
+    })
     .then(res => {
       console.log("Updated");
     })
