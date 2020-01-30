@@ -5,7 +5,7 @@ const sequelize = new Sequelize(
     process.env.LOCAL_NAME,
     process.env.LOCAL_USER,
     process.env.LOCAL_PASS, {
-        dialect: 'mysql',
+        dialect: 'postgres',
         host: process.env.LOCAL_HOST
     })
 
