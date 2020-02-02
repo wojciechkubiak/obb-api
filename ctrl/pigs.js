@@ -18,12 +18,12 @@ exports.getOutPigs = (require, result, next) => {
   Pigs.findAll({
       where: {
         [Op.or]: [{
-            pig_selling_cost: {
+            pigSellingCost: {
               [Op.ne]: null
             }
           },
           {
-            pig_death_date: {
+            pigDeathDate: {
               [Op.ne]: null
             }
           }
@@ -43,11 +43,11 @@ exports.getActivePigs = (require, result, next) => {
 
   Pigs.findAll({
       where: {
-        id_pen: id,
+        idPen: id,
         [Op.and]: [{
-          pig_selling_cost: null
+          pigSellingCost: null
         }, {
-          pig_death_date: null
+          pigDeathDate: null
         }]
       }
     })
@@ -60,18 +60,18 @@ exports.getActivePigs = (require, result, next) => {
 };
 
 exports.postAddPig = (require, result, next) => {
-  const penID = require.body.id_pen;
+  const penID = require.body.idPen;
   const id = require.body.id;
-  const gender = require.body.pig_gender;
-  const shoppingDate = require.body.pig_shopping_date;
-  const shoppingPrice = require.body.pig_shopping_price;
+  const gender = require.body.pigGender;
+  const shoppingDate = require.body.pigShoppingDate;
+  const shoppingPrice = require.body.pigShoppingPrice;
 
   Pigs.create({
-      id_pen: penID,
+      idPen: penID,
       id: id,
-      pig_gender: gender,
-      pig_shopping_date: shoppingDate,
-      pig_shopping_price: shoppingPrice
+      pigGender: gender,
+      pigShoppingDate: shoppingDate,
+      pigShoppingPrice: shoppingPrice
     })
     .then(out => {
       console.log(out);
@@ -84,16 +84,16 @@ exports.postAddPig = (require, result, next) => {
 exports.postEditActivePig = (require, result, next) => {
   const id = require.params.id;
 
-  const upPigPen = require.body.id_pen;
-  const upPigGender = require.body.pig_gender;
-  const upPigShoppingDate = require.body.pig_shopping_date;
-  const upPigShoppingPrice = require.body.pig_shopping_price;
+  const upPigPen = require.body.idPen;
+  const upPigGender = require.body.pigGender;
+  const upPigShoppingDate = require.body.pig_shoppingDate;
+  const upPigShoppingPrice = require.body.pig_shoppingPrice;
 
   Pigs.update({
-      id_pen: upPigPen,
-      pig_gender: upPigGender,
-      pig_shopping_date: upPigShoppingDate,
-      pig_shopping_price: upPigShoppingPrice
+      idPen: upPigPen,
+      pigGender: upPigGender,
+      pigShoppingDate: upPigShoppingDate,
+      pigShoppingPrice: upPigShoppingPrice
     }, {
       where: {
         id: id
@@ -110,12 +110,12 @@ exports.postEditActivePig = (require, result, next) => {
 exports.postEditSoldPig = (require, result, next) => {
   const id = require.params.id;
 
-  const upPigSaleDate = require.body.pig_sale_date;
-  const upPigSellingCost = require.body.pig_selling_cost;
+  const upPigSaleDate = require.body.pigSaleDate;
+  const upPigSellingCost = require.body.pigSellingCost;
 
   Pigs.update({
-      pig_sale_date: upPigSaleDate,
-      pig_selling_cost: upPigSellingCost
+      pigSaleDate: upPigSaleDate,
+      pigSellingCost: upPigSellingCost
     }, {
       where: {
         id: id
@@ -132,10 +132,10 @@ exports.postEditSoldPig = (require, result, next) => {
 exports.postEditDeadPig = (require, result, next) => {
   const id = require.params.id;
 
-  const upPigDeathDate = require.body.pig_death_date;
+  const upPigDeathDate = require.body.pigDeathDate;
 
   Pigs.update({
-      pig_death_date: upPigDeathDate
+      pigDeathDate: upPigDeathDate
     }, {
       where: {
         id: id

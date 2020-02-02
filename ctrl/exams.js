@@ -77,38 +77,38 @@ exports.postAddExam = (require, result, next) => {
 exports.postEditExam = (require, result, next) => {
   const id = parseInt(require.params.id);
 
-  const upPigID = require.body.id_pig;
-  const upExamDate = require.body.ex_date;
-  const upExamTime = require.body.ex_time;
+  const upPigID = require.body.idPig;
+  const upExamDate = require.body.exDate;
+  const upExamTime = require.body.exTime;
   const upFeces = require.body.feces;
   const upTissue = require.body.tissue;
-  const upExamResult = require.body.ex_result;
+  const upExamResult = require.body.exResult;
   const upMedicine = require.body.medicine;
-  const upMedicineQty = require.body.medicine_qty;
-  const upMedicineType = require.body.medicine_type;
+  const upMedicineQty = require.body.medicineQty;
+  const upMedicineType = require.body.medicineType;
   const upDiarrhea = require.body.diarrhea;
   const upWeight = require.body.weight;
   const upTemperature = require.body.temperature;
   const upLameness = require.body.lameness;
-  const upRespiratorySystem = require.body.respiratory_sys;
-  const upSkinChanges = require.body.skin_changes;
+  const upRespiratorySystem = require.body.respiratorySys;
+  const upSkinChanges = require.body.skinChanges;
 
   Exam.update({
-      id_pig: upPigID,
-      ex_date: upExamDate,
-      ex_time: upExamTime,
+      idPig: upPigID,
+      exDate: upExamDate,
+      exTime: upExamTime,
       feces: upFeces,
       tissue: upTissue,
-      ex_result: upExamResult,
+      exResult: upExamResult,
       medicine: upMedicine,
-      medicine_qty: upMedicineQty,
-      medicine_type: upMedicineType,
+      medicineQty: upMedicineQty,
+      medicineType: upMedicineType,
       diarrhea: upDiarrhea,
       weight: upWeight,
       temperature: upTemperature,
       lameness: upLameness,
-      respiratory_sys: upRespiratorySystem,
-      skin_changes: upSkinChanges
+      respiratorySys: upRespiratorySystem,
+      skinChanges: upSkinChanges
     }, {
       where: {
         id: id

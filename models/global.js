@@ -2,30 +2,30 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../utility/connection');
 
-const GlobalMeasures = sequelize.define('global_measures', {
+const GlobalMeasures = sequelize.define('globalMeasures', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    measure_date: {
+    measureDate: {
         type: Sequelize.DATE,
         allowNull: false
     },
-    measure_time: {
+    measureTime: {
         type: Sequelize.TIME,
         allowNull: false
     },
-    nh_three: {
+    nhThree: {
         type: Sequelize.SMALLINT,
         allowNull: false
     },
-    h_two_s: {
+    hTwoS: {
         type: Sequelize.SMALLINT,
         allowNull: false
     },
-    co_two: {
+    coTwo: {
         type: Sequelize.SMALLINT,
         allowNull: false
     },

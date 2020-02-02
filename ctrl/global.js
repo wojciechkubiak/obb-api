@@ -26,20 +26,20 @@ exports.getLatestGlobalMeasures = (require, result, next) => {
 };
 
 exports.postAddGlobalMeasure = (require, result, next) => {
-  const newMeasureDate = require.body.measure_date;
-  const newMeasureTime = require.body.measure_time;
-  const newNHThree = require.body.nh_three;
-  const newHTwoS = require.body.h_two_s;
-  const newCOTwo = require.body.co_two;
+  const newMeasureDate = require.body.measureDate;
+  const newMeasureTime = require.body.measureTime;
+  const newNHThree = require.body.nhThree;
+  const newHTwoS = require.body.hTwoS;
+  const newCOTwo = require.body.coTwo;
   const newTemperature = require.body.temperature;
   const newWetness = require.body.wetness;
 
   GlobalMeasures.create({
-      measure_date: newMeasureDate,
-      measure_time: newMeasureTime,
-      nh_three: newNHThree,
-      h_two_s: newHTwoS,
-      co_two: newCOTwo,
+      measureDate: newMeasureDate,
+      measureTime: newMeasureTime,
+      nhThree: newNHThree,
+      hTwoS: newHTwoS,
+      coTwo: newCOTwo,
       temperature: newTemperature,
       wetness: newWetness
     })
@@ -54,20 +54,20 @@ exports.postAddGlobalMeasure = (require, result, next) => {
 exports.postEditGlobalMeasure = (require, result, next) => {
   const id = parseInt(require.params.id);
 
-  const upMeasureDate = require.body.measure_date;
-  const upMeasureTime = require.body.measure_time;
-  const upNHThree = require.body.nh_three;
-  const upHTwoS = require.body.h_two_s;
-  const upCOTwo = require.body.co_two;
+  const upMeasureDate = require.body.measureDate;
+  const upMeasureTime = require.body.measureTime;
+  const upNHThree = require.body.nhThree;
+  const upHTwoS = require.body.hTwoS;
+  const upCOTwo = require.body.coTwo;
   const upTemperature = require.body.temperature;
   const upWetness = require.body.wetness;
 
   GlobalMeasures.update({
-      measure_date: upMeasureDate,
-      measure_time: upMeasureTime,
-      nh_three: upNHThree,
-      h_two_s: upHTwoS,
-      co_two: upCOTwo,
+      measureDate: upMeasureDate,
+      measureTime: upMeasureTime,
+      nhThree: upNHThree,
+      hTwoS: upHTwoS,
+      coTwo: upCOTwo,
       temperature: upTemperature,
       wetness: upWetness
     }, {

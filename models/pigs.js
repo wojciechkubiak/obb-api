@@ -3,7 +3,7 @@ const Sequelize = require("sequelize");
 const sequelize = require("../utility/connection");
 
 const Pigs = sequelize.define("pigs", {
-  id_pen: {
+  idPen: {
     type: Sequelize.INTEGER,
     allowNull: false,
     references: {
@@ -16,27 +16,27 @@ const Pigs = sequelize.define("pigs", {
     allowNull: false,
     primaryKey: true
   },
-  pig_gender: {
+  pigGender: {
     type: Sequelize.TEXT,
     allowNull: false
   },
-  pig_shopping_date: {
+  pigShoppingDate: {
     type: Sequelize.DATE,
     allowNull: false
   },
-  pig_shopping_price: {
+  pigShoppingPrice: {
     type: Sequelize.INTEGER,
     allowNull: false
   },
-  pig_sale_date: {
+  pigSaleDate: {
     type: Sequelize.DATE,
     allowNull: true
   },
-  pig_selling_cost: {
+  pigSellingCost: {
     type: Sequelize.INTEGER,
     allowNull: true
   },
-  pig_death_date: {
+  pigDeathDate: {
     type: Sequelize.DATE,
     allowNull: true
   },

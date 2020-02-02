@@ -1,4 +1,4 @@
-const PenMeasures = require('../models/penMeasures');
+const PenMeasures = require('../models/pen-measures');
 
 exports.getAllPenMeasures = (require, result, next) => {
   PenMeasures.findAll()
@@ -15,7 +15,7 @@ exports.getPenMeasures = (require, result, next) => {
 
   PenMeasures.findAll({
       where: {
-        id_pen: id
+        idPen: id
       }
     })
     .then(measures => {
@@ -27,25 +27,25 @@ exports.getPenMeasures = (require, result, next) => {
 };
 
 exports.postAddPenMeasure = (require, result, next) => {
-  const upPenID = require.body.id_pen;
-  const upMeasureDate = require.body.measure_date;
-  const upMeasureTime = require.body.measure_time;
+  const upPenID = require.body.idPen;
+  const upMeasureDate = require.body.measureDate;
+  const upMeasureTime = require.body.measureTime;
   const upBreakdown = require.body.breakdown;
   const upDosatron = require.body.dosatron;
   const upAddition = require.body.addition;
   const upForage = require.body.forage;
-  const upForageQty = require.body.forage_qty_used;
+  const upForageQty = require.body.forageQtyUsed;
   const upWater = require.body.water;
 
   GlobalMeasures.create({
-      id_pen: upPenID,
-      measure_date: upMeasureDate,
-      measure_time: upMeasureTime,
+      idPen: upPenID,
+      measureDate: upMeasureDate,
+      measureTime: upMeasureTime,
       breakdown: upBreakdown,
       dosatron: upDosatron,
       addition: upAddition,
       forage: upForage,
-      forage_qty_used: upForageQty,
+      forageQtyUsed: upForageQty,
       water: upWater
     })
     .then(out => {
@@ -59,25 +59,25 @@ exports.postAddPenMeasure = (require, result, next) => {
 exports.postEditPenMeasure = (require, result, next) => {
   const id = parseInt(require.params.id);
 
-  const upPenID = require.body.id_pen;
-  const upMeasureDate = require.body.measure_date;
-  const upMeasureTime = require.body.measure_time;
+  const upPenID = require.body.idPen;
+  const upMeasureDate = require.body.measureDate;
+  const upMeasureTime = require.body.measureTime;
   const upBreakdown = require.body.breakdown;
   const upDosatron = require.body.dosatron;
   const upAddition = require.body.addition;
   const upForage = require.body.forage;
-  const upForageQty = require.body.forage_qty_used;
+  const upForageQty = require.body.forageQtyUsed;
   const upWater = require.body.water;
 
   PenMeasures.update({
-      id_pen: upPenID,
-      measure_date: upMeasureDate,
-      measure_time: upMeasureTime,
+      idPen: upPenID,
+      measureDate: upMeasureDate,
+      measureTime: upMeasureTime,
       breakdown: upBreakdown,
       dosatron: upDosatron,
       addition: upAddition,
       forage: upForage,
-      forage_qty_used: upForageQty,
+      forageQtyUsed: upForageQty,
       water: upWater
     }, {
       where: {

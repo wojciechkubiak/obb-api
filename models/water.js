@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../utility/connection');
 
-const Forage = sequelize.define('forages', {
+const Water = sequelize.define('waters', {
     idPen: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -14,31 +14,19 @@ const Forage = sequelize.define('forages', {
     id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
+        primaryKey: true
     },
-    fgAbout: {
-        type: Sequelize.TEXT,
-        allowNull: false
-    },
-    fgQty: {
-        type: Sequelize.FLOAT(10),
-        allowNull: false
-    },
-    fgPrice: {
-        type: Sequelize.FLOAT(5),
-        allowNull: false
-    },
-    creationDate: {
+    measureDate: {
         type: Sequelize.DATE,
         allowNull: false
     },
-    producer: {
-        type: Sequelize.TEXT,
+    measureTime: {
+        type: Sequelize.TIME,
         allowNull: false
     },
-    expiration: {
-        type: Sequelize.DATE,
+    water: {
+        type: Sequelize.SMALLINT,
         allowNull: false
     },
     createdAt: {
@@ -49,4 +37,4 @@ const Forage = sequelize.define('forages', {
     }
 });
 
-module.exports = Forage;
+module.exports = Water;

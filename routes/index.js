@@ -2,12 +2,12 @@ const path = require("path");
 
 const express = require("express");
 
-const GlobalMeasuresCtrl = require("../ctrl/globalCtrl");
-const PensCtrl = require("../ctrl/pensCtrl");
-const PenMeasuresCtrl = require("../ctrl/penMeasuresCtrl");
-const ForageCtrl = require("../ctrl/forageCtrl");
-const PigsCtrl = require("../ctrl/pigsCtrl");
-const ExamsCtrl = require("../ctrl/examsCtrl");
+const GlobalMeasuresCtrl = require("../ctrl/global");
+const PensCtrl = require("../ctrl/pens");
+const PenMeasuresCtrl = require("../ctrl/pen-measures");
+const ForageCtrl = require("../ctrl/forage");
+const PigsCtrl = require("../ctrl/pigs");
+const ExamsCtrl = require("../ctrl/exams");
 
 const router = express.Router();
 

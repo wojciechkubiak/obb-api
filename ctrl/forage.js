@@ -5,7 +5,7 @@ exports.getForageData = (require, result, next) => {
 
   Forage.findAll({
       where: {
-        id_pen: id
+        idPen: id
       }
     })
     .then(forage => {
@@ -17,20 +17,20 @@ exports.getForageData = (require, result, next) => {
 };
 
 exports.postAddForage = (require, result, next) => {
-  const penID = require.body.id_pen;
-  const forageAbout = require.body.fg_about;
-  const forageQty = require.body.fg_qty;
-  const foragePrice = require.body.fg_price;
-  const creationDate = require.body.creation_date;
+  const penID = require.body.idPen;
+  const forageAbout = require.body.fgAbout;
+  const forageQty = require.body.fgQty;
+  const foragePrice = require.body.fgPrice;
+  const creationDate = require.body.creationDate;
   const producer = require.body.producer;
   const expiration = require.body.expiration;
 
   Forage.create({
-      id_pen: penID,
-      fg_about: forageAbout,
-      fg_qty: forageQty,
-      fg_price: foragePrice,
-      creation_date: creationDate,
+      idPen: penID,
+      fgAbout: forageAbout,
+      fgQty: forageQty,
+      fgPrice: foragePrice,
+      creationDate: creationDate,
       producer: producer,
       expiration: expiration
     })
@@ -45,20 +45,20 @@ exports.postAddForage = (require, result, next) => {
 exports.postEditForage = (require, result, next) => {
   const id = parseInt(require.params.id);
 
-  const upPenID = require.body.id_pen;
-  const upForageAbout = require.body.fg_about;
-  const upForageQty = require.body.fg_qty;
-  const upForagePrice = require.body.fg_price;
-  const upCreationDate = require.body.creation_date;
+  const upPenID = require.body.idPen;
+  const upForageAbout = require.body.fgAbout;
+  const upForageQty = require.body.fgQty;
+  const upForagePrice = require.body.fgPrice;
+  const upCreationDate = require.body.creationDate;
   const upProducer = require.body.producer;
   const upExpiration = require.body.expiration;
 
   Forage.update({
-      id_pen: upPenID,
-      fg_about: upForageAbout,
-      fg_qty: upForageQty,
-      fg_price: upForagePrice,
-      creation_date: upCreationDate,
+      idPen: upPenID,
+      fgAbout: upForageAbout,
+      fgQty: upForageQty,
+      fgPrice: upForagePrice,
+      creationDate: upCreationDate,
       producer: upProducer,
       expiration: upExpiration
     }, {

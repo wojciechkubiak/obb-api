@@ -20,14 +20,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const GlobalMeasures = require('./models/global');
 const Pens = require('./models/pens');
-const PenMeasures = require('./models/penMeasures');
+const PenMeasures = require('./models/pen-measures');
 const Forage = require('./models/forage');
 const Pigs = require('./models/pigs');
 const Exams = require('./models/exams');
+const Water = require('./models/water');
 
 Pens.hasMany(Pigs);
 Pens.hasMany(PenMeasures);
 Pens.hasMany(Forage);
+Pens.hasMany(Water);
 Pigs.hasMany(Exams);
 
 app.use(indexRouter);

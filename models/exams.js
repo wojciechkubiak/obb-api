@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 const sequelize = require('../utility/connection');
 
 const Exams = sequelize.define('exams', {
-    id_pig: {
+    idPig: {
         type: Sequelize.CHAR(50),
         allowNull: false,
         references: {
@@ -17,11 +17,11 @@ const Exams = sequelize.define('exams', {
         primaryKey: true,
         autoIncrement: true
     },
-    ex_date: {
+    exDate: {
         type: Sequelize.DATE,
         allowNull: false
     },
-    ex_time: {
+    exTime: {
         type: Sequelize.TIME,
         allowNull: false
     },
@@ -33,7 +33,7 @@ const Exams = sequelize.define('exams', {
         type: Sequelize.TEXT,
         allowNull: false
     },
-    ex_result: {
+    exResult: {
         type: Sequelize.TEXT,
         allowNull: false
     },
@@ -41,11 +41,11 @@ const Exams = sequelize.define('exams', {
         type: Sequelize.TEXT,
         allowNull: false
     },
-    medicine_qty: {
+    medicineQty: {
         type: Sequelize.SMALLINT,
         allowNull: false
     },
-    medicine_type: {
+    medicineType: {
         type: Sequelize.TEXT,
         allowNull: false
     },
@@ -65,11 +65,11 @@ const Exams = sequelize.define('exams', {
         type: Sequelize.CHAR(1),
         allowNull: false
     },
-    respiratory_sys: {
+    respiratorySys: {
         type: Sequelize.CHAR(1),
         allowNull: false
     },
-    skin_changes: {
+    skinChanges: {
         type: Sequelize.TEXT,
         allowNull: false
     },

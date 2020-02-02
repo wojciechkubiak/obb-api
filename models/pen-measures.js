@@ -2,8 +2,8 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../utility/connection');
 
-const PenMeasures = sequelize.define('pen_measures', {
-    id_pen: {
+const PenMeasures = sequelize.define('penMeasures', {
+    idPen: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -17,11 +17,11 @@ const PenMeasures = sequelize.define('pen_measures', {
         autoIncrement: true,
         primaryKey: true
     },
-    measure_date: {
+    measureDate: {
         type: Sequelize.DATE,
         allowNull: false
     },
-    measure_time: {
+    measureTime: {
         type: Sequelize.TIME,
         allowNull: false
     },
@@ -41,13 +41,19 @@ const PenMeasures = sequelize.define('pen_measures', {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    forage_qty_used: {
+    forageQtyUsed: {
         type: Sequelize.FLOAT(5),
         allowNull: false
     },
     water: {
         type: Sequelize.SMALLINT,
         allowNull: false
+    },
+    createdAt: {
+        type: Sequelize.DATE
+    },
+    updatedAt: {
+        type: Sequelize.DATE
     }
 });
 
