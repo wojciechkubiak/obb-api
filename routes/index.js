@@ -8,6 +8,7 @@ const PenMeasuresCtrl = require("../ctrl/pen-measures");
 const ForageCtrl = require("../ctrl/forage");
 const PigsCtrl = require("../ctrl/pigs");
 const ExamsCtrl = require("../ctrl/exams");
+const WaterCtrl = require("../ctrl/water");
 
 const router = express.Router();
 
@@ -44,5 +45,12 @@ router.get("/exams-pig/:id", ExamsCtrl.getExamsForPig);
 router.post("/add-exam", ExamsCtrl.postAddExam);
 router.put("/edit-exam/:id", ExamsCtrl.postEditExam);
 router.delete("/delete-exam/:id", ExamsCtrl.deleteExam);
+
+router.get("/water-feach-pen/:id", WaterCtrl.getLastWaterData);
+router.get("/water-pen/:id", WaterCtrl.getAllWaterData);
+// TODO: router.get("/water-feach-pen-last/:id", WaterCtrl.getLastWaterDataForAllPens);
+router.post("/water-add", WaterCtrl.postWaterEntry);
+router.put("/water-edit/:id", WaterCtrl.postEditWaterEntry);
+router.delete("/water-delete/:id", WaterCtrl.deleteWaterEntry);
 
 module.exports = router;
