@@ -84,7 +84,7 @@ exports.postEditGlobalMeasure = (require, result, next) => {
 };
 
 exports.deleteGlobalMeasure = (require, result, next) => {
-  const id = require.params.id;
+  const id = parseInt(require.params.id);
 
   GlobalMeasures.destroy({
       where: {

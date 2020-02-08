@@ -93,7 +93,7 @@ exports.postEditPenMeasure = (require, result, next) => {
 };
 
 exports.deletePenMeasure = (require, result, next) => {
-  const id = require.params.id;
+  const id = parseInt(require.params.id);
 
   PenMeasures.destroy({
       where: {

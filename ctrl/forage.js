@@ -16,6 +16,8 @@ exports.getForageData = (require, result, next) => {
     });
 };
 
+//TODO Get all/latest forage for every ID (ask if there is more than one)
+
 exports.postAddForage = (require, result, next) => {
   const penID = require.body.idPen;
   const forageAbout = require.body.fgAbout;
@@ -75,7 +77,7 @@ exports.postEditForage = (require, result, next) => {
 };
 
 exports.deleteForage = (require, result, next) => {
-  const id = require.params.id;
+  const id = parseInt(require.params.id);
 
   Forage.destroy({
       where: {

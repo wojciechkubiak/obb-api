@@ -5,7 +5,7 @@ exports.getExamsForPig = (require, result, next) => {
 
   Exam.findAll({
       where: {
-        id_pig: id
+        idPig: id
       }
     })
     .then(exams => {
@@ -17,7 +17,7 @@ exports.getExamsForPig = (require, result, next) => {
 };
 
 exports.getExam = (require, result, next) => {
-  const id = require.params.id;
+  const id = parseInt(require.params.id);;
 
   Exam.findAll({
       where: {
@@ -33,38 +33,38 @@ exports.getExam = (require, result, next) => {
 };
 
 exports.postAddExam = (require, result, next) => {
-  const pigID = require.body.id_pig;
-  const examDate = require.body.ex_date;
-  const examTime = require.body.ex_time;
+  const pigID = require.body.idPig;
+  const examDate = require.body.exDate;
+  const examTime = require.body.exTime;
   const feces = require.body.feces;
   const tissue = require.body.tissue;
-  const examResult = require.body.ex_result;
+  const examResult = require.body.exResult;
   const medicine = require.body.medicine;
-  const medicineQty = require.body.medicine_qty;
-  const medicineType = require.body.medicine_type;
+  const medicineQty = require.body.medicineQty;
+  const medicineType = require.body.medicineType;
   const diarrhea = require.body.diarrhea;
   const weight = require.body.weight;
   const temperature = require.body.temperature;
   const lameness = require.body.lameness;
-  const respiratorySystem = require.body.respiratory_sys;
-  const skinChanges = require.body.skin_changes;
+  const respiratorySystem = require.body.respiratorySys;
+  const skinChanges = require.body.skinChanges;
 
   Exam.create({
-      id_pig: pigID,
-      ex_date: examDate,
-      ex_time: examTime,
+      idPig: pigID,
+      exDate: examDate,
+      exTime: examTime,
       feces: feces,
       tissue: tissue,
-      ex_result: examResult,
+      exResult: examResult,
       medicine: medicine,
-      medicine_qty: medicineQty,
-      medicine_type: medicineType,
+      medicineQty: medicineQty,
+      medicineType: medicineType,
       diarrhea: diarrhea,
       weight: weight,
       temperature: temperature,
       lameness: lameness,
-      respiratory_sys: respiratorySystem,
-      skin_changes: skinChanges
+      respiratorySys: respiratorySystem,
+      skinChanges: skinChanges
     })
     .then(out => {
       console.log(out);
@@ -123,7 +123,7 @@ exports.postEditExam = (require, result, next) => {
 };
 
 exports.deleteExam = (require, result, next) => {
-  const id = require.params.id;
+  const id = parseInt(require.params.id);
 
   Exam.destroy({
       where: {
