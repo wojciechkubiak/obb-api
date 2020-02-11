@@ -1,8 +1,8 @@
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 
-const sequelize = require('../utility/connection');
+const sequelize = require("../utility/connection");
 
-const Pens = sequelize.define('pens', {
+const Pens = sequelize.define("pens", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -10,7 +10,7 @@ const Pens = sequelize.define('pens', {
     primaryKey: true
   },
   size: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DECIMAL,
     allowNull: false
   },
   isolated: {
