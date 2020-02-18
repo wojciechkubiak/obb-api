@@ -10,6 +10,22 @@ exports.getPens = (require, result, next) => {
     })
 }
 
+exports.getSinglePen = (require, result, next) => {
+  const id = parseInt(require.params.id);
+
+  Pens.findAll({
+      where: {
+        id: id
+      }
+    })
+    .then(pen => {
+      result.status(200).json(pen);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
 exports.postEditPen = (require, result, next) => {
   const id = parseInt(require.params.id);
 

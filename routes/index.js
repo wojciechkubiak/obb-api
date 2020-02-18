@@ -19,6 +19,7 @@ router.put("/edit-global/:id", GlobalMeasuresCtrl.postEditGlobalMeasure);
 router.delete("/delete-global/:id", GlobalMeasuresCtrl.deleteGlobalMeasure);
 
 router.get("/pens", PensCtrl.getPens);
+router.get("/pens/:id", PensCtrl.getSinglePen);
 router.get("/pens-isolated", PensCtrl.postEditPen);
 
 router.get("/pen-measures", PenMeasuresCtrl.getAllPenMeasures);

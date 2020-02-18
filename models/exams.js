@@ -39,21 +39,21 @@ const Exams = sequelize.define("exams", {
   },
   medicine: {
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: true
   },
   medicineQty: {
     type: Sequelize.SMALLINT,
-    allowNull: false
+    allowNull: true
   },
   medicineType: {
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: true
   },
   diarrhea: {
     type: Sequelize.CHAR(1),
     allowNull: false
   },
-  weight: {
+  pigWeight: {
     type: Sequelize.FLOAT(5),
     allowNull: false
   },

@@ -25,7 +25,11 @@ const Water = sequelize.define("waters", {
     type: Sequelize.TIME,
     allowNull: false
   },
-  water: {
+  waterInit: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  waterUsed: {
     type: Sequelize.SMALLINT,
     allowNull: false
   },

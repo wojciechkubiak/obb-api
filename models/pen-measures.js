@@ -27,27 +27,23 @@ const PenMeasures = sequelize.define("penMeasures", {
   },
   breakdown: {
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: true
   },
   dosatron: {
     type: Sequelize.SMALLINT,
-    allowNull: false
+    allowNull: true
   },
   addition: {
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: true
   },
   forage: {
     type: Sequelize.INTEGER,
-    allowNull: false
+    allowNull: true
   },
   forageQtyUsed: {
     type: Sequelize.FLOAT(5),
-    allowNull: false
-  },
-  water: {
-    type: Sequelize.SMALLINT,
-    allowNull: false
+    allowNull: true
   },
   createdAt: {
     type: Sequelize.DATE

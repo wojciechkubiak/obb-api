@@ -19,7 +19,7 @@ const Forage = sequelize.define("forages", {
   },
   fgAbout: {
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: true
   },
   fgQty: {
     type: Sequelize.FLOAT(10),

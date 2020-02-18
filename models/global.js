@@ -30,11 +30,11 @@ const GlobalMeasures = sequelize.define("globalMeasures", {
     allowNull: false
   },
   temperature: {
-    type: Sequelize.SMALLINT,
+    type: Sequelize.FLOAT,
     allowNull: false
   },
   wetness: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.FLOAT,
     allowNull: false
   },
   createdAt: {

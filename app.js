@@ -4,11 +4,12 @@ const httpErrors = require('http-errors');
 const logger = require('morgan');
 const path = require('path');
 const sequelize = require('./utility/connection');
-
+const cors = require('cors');
 const indexRouter = require('./routes/index');
 
 const app = express();
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({
