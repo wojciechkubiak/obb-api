@@ -152,7 +152,7 @@ exports.postEditDeadPig = (require, result, next) => {
 exports.deletePigEntry = (require, result, next) => {
   const id = require.params.id;
 
-  Pigss.destroy({
+  Pigs.destroy({
       where: {
         id: id
       }
