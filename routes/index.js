@@ -40,6 +40,7 @@ router.post("/add-pig", PigsCtrl.postAddPig);
 router.put("/edit-pig/:id", PigsCtrl.postEditActivePig);
 router.put("/pig-sold/:id", PigsCtrl.postEditSoldPig);
 router.put("/pig-dead/:id", PigsCtrl.postEditDeadPig);
+router.delete("/delete-pig/:id", PigsCtrl.deletePigEntry);
 
 router.get("/exam/:id", ExamsCtrl.getExam);
 router.get("/exams-pig/:id", ExamsCtrl.getExamsForPig);

@@ -148,3 +148,19 @@ exports.postEditDeadPig = (require, result, next) => {
       console.log(error);
     });
 };
+
+exports.deletePigEntry = (require, result, next) => {
+  const id = require.params.id;
+
+  Pigss.destroy({
+      where: {
+        id: id
+      }
+    })
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
