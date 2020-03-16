@@ -35,7 +35,12 @@ router.delete("/delete-forage/:id", ForageCtrl.deleteForage);
 
 router.get("/pigs", PigsCtrl.getPigs);
 router.get("/active-pigs/:id", PigsCtrl.getActivePigs);
-router.get("/out-pigs/", PigsCtrl.getOutPigs);
+
+router.get("/dead-pigs/", PigsCtrl.getDeadPigs);
+router.get("/dead-pigs-limited/", PigsCtrl.getDeadPigsLimited);
+router.get("/sold-pigs/", PigsCtrl.getSoldPigs);
+router.get("/sold-pigs-limited/", PigsCtrl.getDeadPigsLimited);
+
 router.post("/add-pig", PigsCtrl.postAddPig);
 router.put("/edit-pig/:id", PigsCtrl.postEditActivePig);
 router.put("/pig-sold/:id", PigsCtrl.postEditSoldPig);
