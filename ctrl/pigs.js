@@ -48,9 +48,9 @@ exports.getDeadPigsLimited = (require, result, next) => {
 
 exports.getSoldPigs = (require, result, next) => {
   Pigs.findAll({
-    order: [["pigSellingDate", "DESC"]],
+    order: [["pigSaleDate", "DESC"]],
     where: {
-      pigSellingDate: {
+      pigSaleDate: {
         [Op.ne]: null
       }
     }
@@ -66,9 +66,9 @@ exports.getSoldPigs = (require, result, next) => {
 exports.getSoldPigsLimited = (require, result, next) => {
   Pigs.findAll({
     limit: 25,
-    order: [["pigSellingDate", "DESC"]],
+    order: [["pigSaleDate", "DESC"]],
     where: {
-      pigSellingDate: {
+      pigSaleDate: {
         [Op.ne]: null
       }
     }
