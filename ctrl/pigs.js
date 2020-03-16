@@ -15,13 +15,9 @@ exports.getDeadPigs = (require, result, next) => {
   Pigs.findAll({
     order: [["pigDeathDate", "DESC"]],
     where: {
-      [Op.or]: [
-        {
-          pigDeathDate: {
-            [Op.ne]: null
-          }
-        }
-      ]
+      pigDeathDate: {
+        [Op.ne]: null
+      }
     }
   })
     .then(pigs => {
@@ -37,13 +33,9 @@ exports.getDeadPigsLimited = (require, result, next) => {
     limit: 25,
     order: [["pigDeathDate", "DESC"]],
     where: {
-      [Op.or]: [
-        {
-          pigDeathDate: {
-            [Op.ne]: null
-          }
-        }
-      ]
+      pigDeathDate: {
+        [Op.ne]: null
+      }
     }
   })
     .then(pigs => {
@@ -58,13 +50,9 @@ exports.getSoldPigs = (require, result, next) => {
   Pigs.findAll({
     order: [["pigSellingDate", "DESC"]],
     where: {
-      [Op.or]: [
-        {
-          pigSellingDate: {
-            [Op.ne]: null
-          }
-        }
-      ]
+      pigSellingDate: {
+        [Op.ne]: null
+      }
     }
   })
     .then(pigs => {
@@ -80,13 +68,9 @@ exports.getSoldPigsLimited = (require, result, next) => {
     limit: 25,
     order: [["pigSellingDate", "DESC"]],
     where: {
-      [Op.or]: [
-        {
-          pigSellingDate: {
-            [Op.ne]: null
-          }
-        }
-      ]
+      pigSellingDate: {
+        [Op.ne]: null
+      }
     }
   })
     .then(pigs => {
