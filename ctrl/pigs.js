@@ -181,6 +181,28 @@ exports.postEditSoldPig = (require, result, next) => {
     });
 };
 
+exports.postUndoneEditSoldPig = (require, result, next) => {
+  const id = require.params.id;
+
+  Pigs.update(
+    {
+      pigSaleDate: "NULL",
+      pigSellingCost: "NULL"
+    },
+    {
+      where: {
+        id: id
+      }
+    }
+  )
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
 exports.postEditDeadPig = (require, result, next) => {
   const id = require.params.id;
 
@@ -189,6 +211,27 @@ exports.postEditDeadPig = (require, result, next) => {
   Pigs.update(
     {
       pigDeathDate: upPigDeathDate
+    },
+    {
+      where: {
+        id: id
+      }
+    }
+  )
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+exports.postUndoneEditDeadPig = (require, result, next) => {
+  const id = require.params.id;
+
+  Pigs.update(
+    {
+      pigDeathDate: "NULL"
     },
     {
       where: {

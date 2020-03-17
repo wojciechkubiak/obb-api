@@ -41,6 +41,8 @@ router.get("/dead-pigs/", PigsCtrl.getDeadPigs);
 router.get("/dead-pigs-limited/", PigsCtrl.getDeadPigsLimited);
 router.get("/sold-pigs/", PigsCtrl.getSoldPigs);
 router.get("/sold-pigs-limited/", PigsCtrl.getSoldPigsLimited);
+router.put("/pig-undone-sold/:id", PigsCtrl.postUndoneEditSoldPig);
+router.put("/pig-undone-dead/:id", PigsCtrl.postUndoneEditDeadPig);
 
 router.post("/add-pig", PigsCtrl.postAddPig);
 router.put("/edit-pig/:id", PigsCtrl.postEditActivePig);
