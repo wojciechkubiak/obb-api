@@ -186,8 +186,8 @@ exports.postUndoneEditSoldPig = (require, result, next) => {
 
   Pigs.update(
     {
-      pigSaleDate: "NULL",
-      pigSellingCost: "NULL"
+      pigSaleDate: null,
+      pigSellingCost: null
     },
     {
       where: {
@@ -231,7 +231,7 @@ exports.postUndoneEditDeadPig = (require, result, next) => {
 
   Pigs.update(
     {
-      pigDeathDate: "NULL"
+      pigDeathDate: null
     },
     {
       where: {
