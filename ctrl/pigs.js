@@ -132,8 +132,8 @@ exports.postEditActivePig = (require, result, next) => {
 
   const upPigPen = require.body.idPen;
   const upPigGender = require.body.pigGender;
-  const upPigShoppingDate = require.body.pig_shoppingDate;
-  const upPigShoppingPrice = require.body.pig_shoppingPrice;
+  const upPigShoppingDate = require.body.pigShoppingDate;
+  const upPigShoppingPrice = require.body.pigShoppingPrice;
 
   Pigs.update(
     {
