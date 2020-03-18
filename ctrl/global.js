@@ -12,7 +12,7 @@ exports.getGlobalMeasures = (require, result, next) => {
 
 exports.getLatestGlobalMeasures = (require, result, next) => {
   GlobalMeasures.findAll({
-      limit: 1,
+      limit: 10,
       order: [
         ["createdAt", "DESC"]
       ]
