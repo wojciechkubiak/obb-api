@@ -1,7 +1,11 @@
 const GlobalMeasures = require("../models/global");
 
 exports.getGlobalMeasures = (require, result, next) => {
-  GlobalMeasures.findAll()
+  GlobalMeasures.findAll({
+      order: [
+        ["measureDate", "DESC"]
+      ]
+    })
     .then(measures => {
       result.status(200).json(measures);
     })
