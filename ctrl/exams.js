@@ -17,7 +17,7 @@ exports.getExamsForPig = (require, result, next) => {
 };
 
 exports.getExam = (require, result, next) => {
-  const id = parseInt(require.params.id);;
+  const id = require.params.id;
 
   Exam.findAll({
     limit: 1,
