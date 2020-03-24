@@ -5,7 +5,7 @@ exports.getExamsForPig = (require, result, next) => {
 
   Exam.findAll({
     where: {
-      id: id
+      idPig: id
     }
   })
     .then(exams => {
