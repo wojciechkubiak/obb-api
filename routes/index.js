@@ -50,8 +50,8 @@ router.put("/pig-sold/:id", PigsCtrl.postEditSoldPig);
 router.put("/pig-dead/:id", PigsCtrl.postEditDeadPig);
 router.delete("/delete-pig/:id", PigsCtrl.deletePigEntry);
 
-router.get("/exam/:id", ExamsCtrl.getExam);
-router.get("/exams-pig/:id", ExamsCtrl.getExamsForPig);
+router.get("/exams/:id", ExamsCtrl.getExam);
+router.get("/exams-latest/:id", ExamsCtrl.getExamsForPig);
 router.post("/add-exam", ExamsCtrl.postAddExam);
 router.put("/edit-exam/:id", ExamsCtrl.postEditExam);
 router.delete("/delete-exam/:id", ExamsCtrl.deleteExam);

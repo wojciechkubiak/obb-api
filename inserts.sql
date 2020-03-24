@@ -86,8 +86,8 @@ INSERT INTO "pigs"("idPen", "id", "pigGender", "pigShoppingDate", "pigShoppingPr
 ('6', 'odkpdads', 'm', '2019-12-12', '231', null, null, null),
 ('6', 'dkmpsdad', 's', '2019-12-12', '231', null, null, null);
 
-INSERT INTO exams(idPig, exDate, exTime, feces, tissue, exResult, medicine, medicineQty, medicineType, diarrhea, pigWeight, temperature, lameness, respiratorySys, skinChanges) VALUES
-('dsajncsa', '2020-01-01', '12:00:00', '0', '0', 'W normie', null, null, null, '1', '123', '38.1', '1', '1', 'Brak zmian');
+INSERT INTO exams("idPig", "exDate", "exTime", feces, tissue, "exResult", medicine, "medicineQty", "medicineType", diarrhea, "pigWeight", temperature, lameness, "respiratorySys", "skinChanges") VALUES
+('janko', '2020-01-01', '12:00:00', '0', '0', 'W normie', null, null, null, '1', '123', '38.1', '1', '1', 'Brak zmian');
 
 INSERT INTO "waters"("idPen", "measureDate", "measureTime", "waterInit", "waterUsed") VALUES 
 ('1', '2020-01-27', '12:00:00', '24482', '14'),

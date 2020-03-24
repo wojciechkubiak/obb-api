@@ -4,10 +4,10 @@ exports.getExamsForPig = (require, result, next) => {
   const id = require.params.id;
 
   Exam.findAll({
-      where: {
-        idPig: id
-      }
-    })
+    where: {
+      id: id
+    }
+  })
     .then(exams => {
       result.status(200).json(exams);
     })
@@ -20,10 +20,14 @@ exports.getExam = (require, result, next) => {
   const id = parseInt(require.params.id);;
 
   Exam.findAll({
-      where: {
-        id: id
-      }
-    })
+    limit: 1,
+    order: [
+      ["exDate", "DESC"]
+    ],
+    where: {
+      idPig: id
+    }
+  })
     .then(exams => {
       result.status(200).json(exams);
     })
