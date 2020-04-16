@@ -81,6 +81,35 @@ exports.getSoldPigsLimited = (require, result, next) => {
     });
 };
 
+//TODO: Sold/Dead based on date
+exports.getDeadPigsByDate = (require, result, next) => {
+  const id = require.params.id;
+  const year = parseInt(id.slice(0, 4));
+  const month = parseInt(id.slice(4, 6));
+
+  console.log(year, month);
+
+  Pigs.findAll({
+    order: [["pigDeathDate", "DESC"]],
+    where: {
+      $and: [
+        sequelize.where(sequelize.fn('YEAR', sequelize.col('pigDeathDate')), year),
+        sequelize.where(sequelize.fn('MONTH', sequelize.col('pigDeathDate')), month),
+      ],
+       pigDeathDate: {
+        [Op.ne]: null
+      }
+    }
+  })
+    .then(pigs => {
+      result.status(200).json(pigs);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+
 exports.getActivePigs = (require, result, next) => {
   const id = parseInt(require.params.id);
 

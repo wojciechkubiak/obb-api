@@ -26,6 +26,26 @@ exports.getPenMeasures = (require, result, next) => {
     });
 };
 
+exports.getPenMeasuresLast = (require, result, next) => {
+  const id = parseInt(require.params.id);
+
+  PenMeasures.findAll({
+      limit: 1,
+      order: [
+        ["measureDate", "DESC"]
+      ],
+      where: {
+        idPen: id
+      }
+    })
+    .then(measures => {
+      result.status(200).json(measures);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
 exports.postAddPenMeasure = (require, result, next) => {
   const upPenID = require.body.idPen;
   const upMeasureDate = require.body.measureDate;

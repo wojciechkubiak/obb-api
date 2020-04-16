@@ -24,6 +24,7 @@ router.get("/pens-isolated", PensCtrl.postEditPen);
 
 router.get("/pen-measures", PenMeasuresCtrl.getAllPenMeasures);
 router.get("/pen-measures/:id", PenMeasuresCtrl.getPenMeasures);
+router.get("/pen-measures-last/:id", PenMeasuresCtrl.getPenMeasuresLast);
 router.post("/add-pen-measure", PenMeasuresCtrl.postAddPenMeasure);
 router.put("/edit-pen-measure/:id", PenMeasuresCtrl.postEditPenMeasure);
 router.delete("/delete-pen-measure/:id", PenMeasuresCtrl.deletePenMeasure);
@@ -39,6 +40,7 @@ router.get("/active-pigs/:id", PigsCtrl.getActivePigs);
 //TODO: Add into README.md
 router.get("/dead-pigs/", PigsCtrl.getDeadPigs);
 router.get("/dead-pigs-limited/", PigsCtrl.getDeadPigsLimited);
+router.get("/dead-pigs/:id", PigsCtrl.getDeadPigsByDate);
 router.get("/sold-pigs/", PigsCtrl.getSoldPigs);
 router.get("/sold-pigs-limited/", PigsCtrl.getSoldPigsLimited);
 router.put("/pig-undone-sold/:id", PigsCtrl.postUndoneEditSoldPig);
