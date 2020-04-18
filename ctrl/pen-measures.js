@@ -55,7 +55,6 @@ exports.postAddPenMeasure = (require, result, next) => {
   const upAddition = require.body.addition;
   const upForage = require.body.forage;
   const upForageQty = require.body.forageQtyUsed;
-  const upWater = require.body.water;
 
   GlobalMeasures.create({
       idPen: upPenID,
@@ -65,8 +64,7 @@ exports.postAddPenMeasure = (require, result, next) => {
       dosatron: upDosatron,
       addition: upAddition,
       forage: upForage,
-      forageQtyUsed: upForageQty,
-      water: upWater
+      forageQtyUsed: upForageQty
     })
     .then(out => {
       console.log(out);
