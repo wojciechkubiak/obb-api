@@ -56,7 +56,7 @@ exports.postAddPenMeasure = (require, result, next) => {
   const upForage = require.body.forage;
   const upForageQty = require.body.forageQtyUsed;
 
-  GlobalMeasures.create({
+  PenMeasures.create({
       idPen: upPenID,
       measureDate: upMeasureDate,
       measureTime: upMeasureTime,
