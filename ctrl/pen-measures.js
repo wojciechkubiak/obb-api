@@ -14,6 +14,9 @@ exports.getPenMeasures = (require, result, next) => {
   const id = parseInt(require.params.id);
 
   PenMeasures.findAll({
+    order: [
+      ["measureDate", "DESC"]
+    ],
       where: {
         idPen: id
       }
