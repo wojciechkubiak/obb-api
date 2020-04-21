@@ -30,6 +30,7 @@ router.put("/edit-pen-measure/:id", PenMeasuresCtrl.postEditPenMeasure);
 router.delete("/delete-pen-measure/:id", PenMeasuresCtrl.deletePenMeasure);
 
 router.get("/forage/:id", ForageCtrl.getForageData);
+router.get("/forage-last/:id", ForageCtrl.getForageDataLast);
 router.post("/add-forage", ForageCtrl.postAddForage);
 router.put("/edit-forage/:id", ForageCtrl.postEditForage);
 router.delete("/delete-forage/:id", ForageCtrl.deleteForage);

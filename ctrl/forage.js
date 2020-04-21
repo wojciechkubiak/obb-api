@@ -16,6 +16,28 @@ exports.getForageData = (require, result, next) => {
     });
 };
 
+
+exports.getForageDataLast = (require, result, next) => {
+  const id = parseInt(require.params.id);
+
+  Forage.findAll({
+    limit: 1,
+    order: [
+      ["creationDate", "DESC"]
+    ],
+      where: {
+        idPen: id
+      }
+    })
+    .then(forage => {
+      result.status(200).json(forage);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+
 //TODO Get all/latest forage for every ID (ask if there is more than one)
 
 exports.postAddForage = (require, result, next) => {
