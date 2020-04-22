@@ -3,10 +3,10 @@ const { Op } = require("sequelize");
 
 exports.getPigs = (require, result, next) => {
   Pigs.findAll()
-    .then(pigs => {
+    .then((pigs) => {
       result.status(200).json(pigs);
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
@@ -16,14 +16,14 @@ exports.getDeadPigs = (require, result, next) => {
     order: [["pigDeathDate", "DESC"]],
     where: {
       pigDeathDate: {
-        [Op.ne]: null
-      }
-    }
+        [Op.ne]: null,
+      },
+    },
   })
-    .then(pigs => {
+    .then((pigs) => {
       result.status(200).json(pigs);
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
@@ -34,14 +34,14 @@ exports.getDeadPigsLimited = (require, result, next) => {
     order: [["pigDeathDate", "DESC"]],
     where: {
       pigDeathDate: {
-        [Op.ne]: null
-      }
-    }
+        [Op.ne]: null,
+      },
+    },
   })
-    .then(pigs => {
+    .then((pigs) => {
       result.status(200).json(pigs);
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
@@ -51,14 +51,14 @@ exports.getSoldPigs = (require, result, next) => {
     order: [["pigSaleDate", "DESC"]],
     where: {
       pigSaleDate: {
-        [Op.ne]: null
-      }
-    }
+        [Op.ne]: null,
+      },
+    },
   })
-    .then(pigs => {
+    .then((pigs) => {
       result.status(200).json(pigs);
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
@@ -69,38 +69,33 @@ exports.getSoldPigsLimited = (require, result, next) => {
     order: [["pigSaleDate", "DESC"]],
     where: {
       pigSaleDate: {
-        [Op.ne]: null
-      }
-    }
+        [Op.ne]: null,
+      },
+    },
   })
-    .then(pigs => {
+    .then((pigs) => {
       result.status(200).json(pigs);
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
 
-//TODO: Sold/Dead based on date
-exports.getDeadPigsByDate = (require, result, next) => {
+/*
+exports.getSoldPigsByDate = (require, result, next) => {
   const id = require.params.id;
   const year = parseInt(id.slice(0, 4));
   const month = parseInt(id.slice(4, 6));
 
   console.log(year, month);
 
-  Pigs.findAll({
-    order: [["pigDeathDate", "DESC"]],
-    where: {
-      $and: [
-        sequelize.where(sequelize.fn('YEAR', sequelize.col('pigDeathDate')), year),
-        sequelize.where(sequelize.fn('MONTH', sequelize.col('pigDeathDate')), month),
-      ],
-       pigDeathDate: {
-        [Op.ne]: null
-      }
-    }
-  })
+    sequelize.query(
+        'SELECT * FROM pigs WHERE "pigSaleDate" IS NOT NULL AND date_part(\'month\', "pigSaleDate") = :month AND date_part(\'year\', "pigSaleDate") = :year',
+        {
+          replacements: { month: month, year: year},
+          type: QueryTypes.SELECT
+        }
+    )
     .then(pigs => {
       result.status(200).json(pigs);
     })
@@ -108,7 +103,67 @@ exports.getDeadPigsByDate = (require, result, next) => {
       console.log(error);
     });
 };
+*/
+//TODO: Sold/Dead based on date
+exports.getSoldPigsByDate = (require, result, next) => {
+  const id = require.params.id;
+  const year = id.slice(0, 4);
+  const month = id.slice(4, 6);
+  const day = id.slice(6,8);
+  const _year = id.slice(8, 12);
+  const _month = id.slice(12, 14);
+  const _day = id.slice(14, 16);
+  
+  const start= `${year}-${month}-${day}`;
+  const end = `${_year}-${_month}-${_day}`;
 
+  Pigs.findAll({
+    where: {
+      pigSaleDate: {
+        [Op.between] : [start, end]
+      }
+    },
+    order: [["pigSaleDate", "DESC"]],
+    logging: console.log,
+    raw: true
+  })
+    .then((pigs) => {
+      result.status(200).json(pigs);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+exports.getDeadPigsByDate = (require, result, next) => {
+  const id = require.params.id;
+  const year = id.slice(0, 4);
+  const month = id.slice(4, 6);
+  const day = id.slice(6,8);
+  const _year = id.slice(8, 12);
+  const _month = id.slice(12, 14);
+  const _day = id.slice(14, 16);
+  
+  const start= `${year}-${month}-${day}`;
+  const end = `${_year}-${_month}-${_day}`;
+
+  Pigs.findAll({
+    where: {
+      pigDeathDate: {
+        [Op.between] : [start, end]
+      }
+    },
+    order: [["pigDeathDate", "DESC"]],
+    logging: console.log,
+    raw: true
+  })
+    .then((pigs) => {
+      result.status(200).json(pigs);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 exports.getActivePigs = (require, result, next) => {
   const id = parseInt(require.params.id);
@@ -118,18 +173,18 @@ exports.getActivePigs = (require, result, next) => {
       idPen: id,
       [Op.and]: [
         {
-          pigSellingCost: null
+          pigSellingCost: null,
         },
         {
-          pigDeathDate: null
-        }
-      ]
-    }
+          pigDeathDate: null,
+        },
+      ],
+    },
   })
-    .then(pigs => {
+    .then((pigs) => {
       result.status(200).json(pigs);
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
@@ -146,12 +201,12 @@ exports.postAddPig = (require, result, next) => {
     id: id,
     pigGender: gender,
     pigShoppingDate: shoppingDate,
-    pigShoppingPrice: shoppingPrice
+    pigShoppingPrice: shoppingPrice,
   })
-    .then(out => {
+    .then((out) => {
       console.log(out);
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
@@ -169,18 +224,18 @@ exports.postEditActivePig = (require, result, next) => {
       idPen: upPigPen,
       pigGender: upPigGender,
       pigShoppingDate: upPigShoppingDate,
-      pigShoppingPrice: upPigShoppingPrice
+      pigShoppingPrice: upPigShoppingPrice,
     },
     {
       where: {
-        id: id
-      }
+        id: id,
+      },
     }
   )
-    .then(res => {
+    .then((res) => {
       console.log("Updated");
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
@@ -194,18 +249,18 @@ exports.postEditSoldPig = (require, result, next) => {
   Pigs.update(
     {
       pigSaleDate: upPigSaleDate,
-      pigSellingCost: upPigSellingCost
+      pigSellingCost: upPigSellingCost,
     },
     {
       where: {
-        id: id
-      }
+        id: id,
+      },
     }
   )
-    .then(res => {
+    .then((res) => {
       console.log("Updated");
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
@@ -216,18 +271,18 @@ exports.postUndoneEditSoldPig = (require, result, next) => {
   Pigs.update(
     {
       pigSaleDate: null,
-      pigSellingCost: null
+      pigSellingCost: null,
     },
     {
       where: {
-        id: id
-      }
+        id: id,
+      },
     }
   )
-    .then(res => {
+    .then((res) => {
       console.log("Updated");
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
@@ -239,18 +294,18 @@ exports.postEditDeadPig = (require, result, next) => {
 
   Pigs.update(
     {
-      pigDeathDate: upPigDeathDate
+      pigDeathDate: upPigDeathDate,
     },
     {
       where: {
-        id: id
-      }
+        id: id,
+      },
     }
   )
-    .then(res => {
+    .then((res) => {
       console.log("Updated");
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
@@ -260,18 +315,18 @@ exports.postUndoneEditDeadPig = (require, result, next) => {
 
   Pigs.update(
     {
-      pigDeathDate: null
+      pigDeathDate: null,
     },
     {
       where: {
-        id: id
-      }
+        id: id,
+      },
     }
   )
-    .then(res => {
+    .then((res) => {
       console.log("Updated");
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
@@ -281,13 +336,13 @@ exports.deletePigEntry = (require, result, next) => {
 
   Pigs.destroy({
     where: {
-      id: id
-    }
+      id: id,
+    },
   })
-    .then(res => {
+    .then((res) => {
       console.log("Updated");
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };

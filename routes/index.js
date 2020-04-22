@@ -40,8 +40,9 @@ router.get("/active-pigs/:id", PigsCtrl.getActivePigs);
 
 //TODO: Add into README.md
 router.get("/dead-pigs/", PigsCtrl.getDeadPigs);
-router.get("/dead-pigs-limited/", PigsCtrl.getDeadPigsLimited);
 router.get("/dead-pigs/:id", PigsCtrl.getDeadPigsByDate);
+router.get("/dead-pigs-limited/", PigsCtrl.getDeadPigsLimited);
+router.get("/sold-pigs/:id", PigsCtrl.getSoldPigsByDate);
 router.get("/sold-pigs/", PigsCtrl.getSoldPigs);
 router.get("/sold-pigs-limited/", PigsCtrl.getSoldPigsLimited);
 router.put("/pig-undone-sold/:id", PigsCtrl.postUndoneEditSoldPig);
