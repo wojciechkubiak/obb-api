@@ -90,7 +90,7 @@ exports.postEditExam = (require, result, next) => {
   const upMedicineQty = require.body.medicineQty;
   const upMedicineType = require.body.medicineType;
   const upDiarrhea = require.body.diarrhea;
-  const uppigWeight = require.body.pigWeight;
+  const upPigWeight = require.body.pigWeight;
   const upTemperature = require.body.temperature;
   const upLameness = require.body.lameness;
   const upRespiratorySystem = require.body.respiratorySys;
@@ -106,7 +106,7 @@ exports.postEditExam = (require, result, next) => {
       medicineQty: upMedicineQty,
       medicineType: upMedicineType,
       diarrhea: upDiarrhea,
-      pigWeight: uppigWeight,
+      pigWeight: upPigWeight,
       temperature: upTemperature,
       lameness: upLameness,
       respiratorySys: upRespiratorySystem,
@@ -286,13 +286,13 @@ exports.postEditExamDiarrhea = (require, result, next) => {
     });
 };
 
-exports.postEditExampigWeight = (require, result, next) => {
+exports.postEditExamWeight = (require, result, next) => {
   const id = parseInt(require.params.id);
 
-  const uppigWeight = require.body.pigWeight;
+  const upPigWeight = require.body.pigWeight;
 
   Exam.update({
-      pigWeight: uppigWeight,
+      pigWeight: upPigWeight,
     }, {
       where: {
         id: id
