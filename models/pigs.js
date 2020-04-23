@@ -14,6 +14,7 @@ const Pigs = sequelize.define("pigs", {
   id: {
     type: Sequelize.CHAR(50),
     allowNull: false,
+    unique: true, // TODO: test it
     primaryKey: true
   },
   pigGender: {

@@ -60,6 +60,20 @@ router.post("/add-exam", ExamsCtrl.postAddExam);
 router.put("/edit-exam/:id", ExamsCtrl.postEditExam);
 router.delete("/delete-exam/:id", ExamsCtrl.deleteExam);
 
+router.put("/exams-edit-dates/:id", ExamsCtrl.postEditExamDates);
+router.put("/exams-edit-feces/:id", ExamsCtrl.postEditExamFeces);
+router.put("/exams-edit-tissue/:id", ExamsCtrl.postEditExamTissue);
+router.put("/exams-edit-result/:id", ExamsCtrl.postEditExamResult);
+router.put("/exams-edit-medicine/:id", ExamsCtrl.postEditExamMedicine);
+router.put("/exams-edit-medicineqty/:id", ExamsCtrl.postEditExamMedicineQty);
+router.put("/exams-edit-medicinetype/:id", ExamsCtrl.postEditExamMedicineType);
+router.put("/exams-edit-diarrhea/:id", ExamsCtrl.postEditExamDiarrhea);
+router.put("/exams-edit-weight/:id", ExamsCtrl.postEditExamWeight);
+router.put("/exams-edit-temperature/:id", ExamsCtrl.postEditExamTemperature);
+router.put("/exams-edit-lameness/:id", ExamsCtrl.postEditExamLameness);
+router.put("/exams-edit-respiratorysys/:id", ExamsCtrl.postEditExamRespiratorySys);
+router.put("/exams-edit-skinchanges/:id", ExamsCtrl.postEditExamSkinChanges);
+
 router.get("/water-feach-pen/:id", WaterCtrl.getLastWaterData);
 router.get("/water-pen/:id", WaterCtrl.getAllWaterData);
 // TODO: router.get("/water-feach-pen-last/:id", WaterCtrl.getLastWaterDataForAllPens);

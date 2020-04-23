@@ -81,7 +81,6 @@ exports.postAddExam = (require, result, next) => {
 exports.postEditExam = (require, result, next) => {
   const id = parseInt(require.params.id);
 
-  const upPigID = require.body.idPig;
   const upExamDate = require.body.exDate;
   const upExamTime = require.body.exTime;
   const upFeces = require.body.feces;
@@ -98,7 +97,6 @@ exports.postEditExam = (require, result, next) => {
   const upSkinChanges = require.body.skinChanges;
 
   Exam.update({
-      idPig: upPigID,
       exDate: upExamDate,
       exTime: upExamTime,
       feces: upFeces,
@@ -125,6 +123,269 @@ exports.postEditExam = (require, result, next) => {
       console.log(error);
     });
 };
+
+exports.postEditExamDates = (require, result, next) => {
+  const id = parseInt(require.params.id);
+
+  const upExamDate = require.body.exDate;
+  const upExamTime = require.body.exTime;
+
+  Exam.update({
+      exDate: upExamDate,
+      exTime: upExamTime
+    }, {
+      where: {
+        id: id
+      }
+    })
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+exports.postEditExamFeces = (require, result, next) => {
+  const id = parseInt(require.params.id);
+
+  const upFeces = require.body.feces;
+
+  Exam.update({
+      feces: upFeces
+    }, {
+      where: {
+        id: id
+      }
+    })
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+exports.postEditExamTissue = (require, result, next) => {
+  const id = parseInt(require.params.id);
+
+  const upTissue = require.body.tissue;
+  
+  Exam.update({
+      tissue: upTissue
+    }, {
+      where: {
+        id: id
+      }
+    })
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+exports.postEditExamResult = (require, result, next) => {
+  const id = parseInt(require.params.id);
+
+  const upExamResult = require.body.exResult;
+
+  Exam.update({
+      exResult: upExamResult,
+    }, {
+      where: {
+        id: id
+      }
+    })
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+exports.postEditExamMedicine = (require, result, next) => {
+  const id = parseInt(require.params.id);
+
+  const upMedicine = require.body.medicine;
+
+  Exam.update({
+      medicine: upMedicine
+    }, {
+      where: {
+        id: id
+      }
+    })
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+exports.postEditExamMedicineQty = (require, result, next) => {
+  const id = parseInt(require.params.id);
+
+  const upMedicineQty = require.body.medicineQty;
+
+  Exam.update({
+      medicineQty: upMedicineQty,
+    }, {
+      where: {
+        id: id
+      }
+    })
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+exports.postEditExamMedicineType = (require, result, next) => {
+  const id = parseInt(require.params.id);
+
+  const upMedicineType = require.body.medicineType;
+
+  Exam.update({
+      medicineType: upMedicineType,
+    }, {
+      where: {
+        id: id
+      }
+    })
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+exports.postEditExamDiarrhea = (require, result, next) => {
+  const id = parseInt(require.params.id);
+
+  const upDiarrhea = require.body.diarrhea;
+
+  Exam.update({
+      diarrhea: upDiarrhea
+    }, {
+      where: {
+        id: id
+      }
+    })
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+exports.postEditExamWeight = (require, result, next) => {
+  const id = parseInt(require.params.id);
+
+  const upWeight = require.body.weight;
+
+  Exam.update({
+      weight: upWeight,
+    }, {
+      where: {
+        id: id
+      }
+    })
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+exports.postEditExamTemperature = (require, result, next) => {
+  const id = parseInt(require.params.id);
+
+  const upTemperature = require.body.temperature;
+
+  Exam.update({
+      temperature: upTemperature
+    }, {
+      where: {
+        id: id
+      }
+    })
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+exports.postEditExamLameness = (require, result, next) => {
+  const id = parseInt(require.params.id);
+
+  const upLameness = require.body.lameness;
+
+  Exam.update({
+      lameness: upLameness,
+    }, {
+      where: {
+        id: id
+      }
+    })
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+exports.postEditExamRespiratorySys = (require, result, next) => {
+  const id = parseInt(require.params.id);
+
+  const upRespiratorySystem = require.body.respiratorySys;
+
+  Exam.update({
+      respiratorySys: upRespiratorySystem,
+    }, {
+      where: {
+        id: id
+      }
+    })
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+exports.postEditExamSkinChanges = (require, result, next) => {
+  const id = parseInt(require.params.id);
+
+  const upSkinChanges = require.body.skinChanges;
+
+  Exam.update({
+      skinChanges: upSkinChanges
+    }, {
+      where: {
+        id: id
+      }
+    })
+    .then(res => {
+      console.log("Updated");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
 
 exports.deleteExam = (require, result, next) => {
   const id = parseInt(require.params.id);
