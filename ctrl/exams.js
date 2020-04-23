@@ -47,7 +47,7 @@ exports.postAddExam = (require, result, next) => {
   const medicineQty = require.body.medicineQty;
   const medicineType = require.body.medicineType;
   const diarrhea = require.body.diarrhea;
-  const weight = require.body.weight;
+  const pigWeight = require.body.pigWeight;
   const temperature = require.body.temperature;
   const lameness = require.body.lameness;
   const respiratorySystem = require.body.respiratorySys;
@@ -64,7 +64,7 @@ exports.postAddExam = (require, result, next) => {
       medicineQty: medicineQty,
       medicineType: medicineType,
       diarrhea: diarrhea,
-      weight: weight,
+      pigWeight: pigWeight,
       temperature: temperature,
       lameness: lameness,
       respiratorySys: respiratorySystem,
@@ -90,7 +90,7 @@ exports.postEditExam = (require, result, next) => {
   const upMedicineQty = require.body.medicineQty;
   const upMedicineType = require.body.medicineType;
   const upDiarrhea = require.body.diarrhea;
-  const upWeight = require.body.weight;
+  const uppigWeight = require.body.pigWeight;
   const upTemperature = require.body.temperature;
   const upLameness = require.body.lameness;
   const upRespiratorySystem = require.body.respiratorySys;
@@ -106,7 +106,7 @@ exports.postEditExam = (require, result, next) => {
       medicineQty: upMedicineQty,
       medicineType: upMedicineType,
       diarrhea: upDiarrhea,
-      weight: upWeight,
+      pigWeight: uppigWeight,
       temperature: upTemperature,
       lameness: upLameness,
       respiratorySys: upRespiratorySystem,
@@ -286,13 +286,13 @@ exports.postEditExamDiarrhea = (require, result, next) => {
     });
 };
 
-exports.postEditExamWeight = (require, result, next) => {
+exports.postEditExampigWeight = (require, result, next) => {
   const id = parseInt(require.params.id);
 
-  const upWeight = require.body.weight;
+  const uppigWeight = require.body.pigWeight;
 
   Exam.update({
-      weight: upWeight,
+      pigWeight: uppigWeight,
     }, {
       where: {
         id: id
