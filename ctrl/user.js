@@ -43,7 +43,7 @@ exports.loginUser = (require, result, next) => {
             console.log('Im here')
             if(bcrypt.compareSync(require.body.password, user.password)) {
                 console.log('Im here 2')
-                let token = jwt.sign(user.dataValues, process.env.LOCAL_KEY || process.env.HR_NAME, {
+                let token = jwt.sign(user.dataValues, process.env.LOCAL_KEY || process.env.HR_KEY, {
                     expiresIn: 1440
                 })
                 result.send(token);
