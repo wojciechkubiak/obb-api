@@ -12,7 +12,7 @@ exports.getForageData = (require, result, next) => {
       result.status(200).json(forage);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -33,7 +33,7 @@ exports.getForageDataLast = (require, result, next) => {
       result.status(200).json(forage);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -62,7 +62,7 @@ exports.postAddForage = (require, result, next) => {
       console.log(out);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -91,10 +91,10 @@ exports.postEditForage = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -107,9 +107,9 @@ exports.deleteForage = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };

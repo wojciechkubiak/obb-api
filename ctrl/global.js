@@ -10,7 +10,7 @@ exports.getGlobalMeasures = (require, result, next) => {
       result.status(200).json(measures);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -25,7 +25,7 @@ exports.getLatestGlobalMeasures = (require, result, next) => {
       result.status(200).json(measures);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -51,7 +51,7 @@ exports.postAddGlobalMeasure = (require, result, next) => {
       console.log(out);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -80,10 +80,10 @@ exports.postEditGlobalMeasure = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -96,9 +96,9 @@ exports.deleteGlobalMeasure = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };

@@ -2,6 +2,7 @@ const path = require("path");
 
 const express = require("express");
 
+const UserCtrl = require("../ctrl/user");
 const GlobalMeasuresCtrl = require("../ctrl/global");
 const PensCtrl = require("../ctrl/pens");
 const PenMeasuresCtrl = require("../ctrl/pen-measures");
@@ -11,6 +12,9 @@ const ExamsCtrl = require("../ctrl/exams");
 const WaterCtrl = require("../ctrl/water");
 
 const router = express.Router();
+
+router.post('/register', UserCtrl.registerUser);
+router.post('/login', UserCtrl.loginUser);
 
 router.get("/global", GlobalMeasuresCtrl.getGlobalMeasures);
 router.get("/global-latest", GlobalMeasuresCtrl.getLatestGlobalMeasures);

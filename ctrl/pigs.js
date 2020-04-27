@@ -7,7 +7,7 @@ exports.getPigs = (require, result, next) => {
       result.status(200).json(pigs);
     })
     .catch((error) => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -24,7 +24,7 @@ exports.getDeadPigs = (require, result, next) => {
       result.status(200).json(pigs);
     })
     .catch((error) => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -42,7 +42,7 @@ exports.getDeadPigsLimited = (require, result, next) => {
       result.status(200).json(pigs);
     })
     .catch((error) => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -59,7 +59,7 @@ exports.getSoldPigs = (require, result, next) => {
       result.status(200).json(pigs);
     })
     .catch((error) => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -77,7 +77,7 @@ exports.getSoldPigsLimited = (require, result, next) => {
       result.status(200).json(pigs);
     })
     .catch((error) => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -100,7 +100,7 @@ exports.getSoldPigsByDate = (require, result, next) => {
       result.status(200).json(pigs);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 */
@@ -131,7 +131,7 @@ exports.getSoldPigsByDate = (require, result, next) => {
       result.status(200).json(pigs);
     })
     .catch((error) => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -161,7 +161,7 @@ exports.getDeadPigsByDate = (require, result, next) => {
       result.status(200).json(pigs);
     })
     .catch((error) => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -185,7 +185,7 @@ exports.getActivePigs = (require, result, next) => {
       result.status(200).json(pigs);
     })
     .catch((error) => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -207,7 +207,7 @@ exports.postAddPig = (require, result, next) => {
       console.log(out);
     })
     .catch((error) => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -233,10 +233,10 @@ exports.postEditActivePig = (require, result, next) => {
     }
   )
     .then((res) => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch((error) => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -258,10 +258,10 @@ exports.postEditSoldPig = (require, result, next) => {
     }
   )
     .then((res) => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch((error) => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -280,10 +280,10 @@ exports.postUndoneEditSoldPig = (require, result, next) => {
     }
   )
     .then((res) => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch((error) => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -303,10 +303,10 @@ exports.postEditDeadPig = (require, result, next) => {
     }
   )
     .then((res) => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch((error) => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -324,10 +324,10 @@ exports.postUndoneEditDeadPig = (require, result, next) => {
     }
   )
     .then((res) => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch((error) => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -340,9 +340,9 @@ exports.deletePigEntry = (require, result, next) => {
     },
   })
     .then((res) => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch((error) => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };

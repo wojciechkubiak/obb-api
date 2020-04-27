@@ -12,7 +12,7 @@ exports.getExamsForPig = (require, result, next) => {
       result.status(200).json(exams);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -32,7 +32,7 @@ exports.getExam = (require, result, next) => {
       result.status(200).json(exams);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -74,7 +74,7 @@ exports.postAddExam = (require, result, next) => {
       console.log(out);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -117,10 +117,10 @@ exports.postEditExam = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -139,10 +139,10 @@ exports.postEditExamDates = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -159,10 +159,10 @@ exports.postEditExamFeces = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -179,10 +179,10 @@ exports.postEditExamTissue = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -199,10 +199,10 @@ exports.postEditExamResult = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -219,10 +219,10 @@ exports.postEditExamMedicine = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -239,10 +239,10 @@ exports.postEditExamMedicineQty = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -259,10 +259,10 @@ exports.postEditExamMedicineType = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -279,10 +279,10 @@ exports.postEditExamDiarrhea = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -299,10 +299,10 @@ exports.postEditExamWeight = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -319,10 +319,10 @@ exports.postEditExamTemperature = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -339,10 +339,10 @@ exports.postEditExamLameness = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -359,10 +359,10 @@ exports.postEditExamRespiratorySys = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -379,10 +379,10 @@ exports.postEditExamSkinChanges = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -396,9 +396,9 @@ exports.deleteExam = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };

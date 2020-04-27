@@ -6,7 +6,7 @@ exports.getPens = (require, result, next) => {
       result.status(200).json(pens);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     })
 }
 
@@ -22,7 +22,7 @@ exports.getSinglePen = (require, result, next) => {
       result.status(200).json(pen);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };
 
@@ -41,9 +41,9 @@ exports.postEditPen = (require, result, next) => {
       }
     })
     .then(res => {
-      console.log("Updated");
+      result.send(`Updated ${res}`);
     })
     .catch(error => {
-      console.log(error);
+      result.status(400).json({error: error})
     });
 };

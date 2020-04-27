@@ -12,6 +12,7 @@ const Forage = require('./models/forage');
 const Pigs = require('./models/pigs');
 const Exams = require('./models/exams');
 const Water = require('./models/water');
+const User = require('./models/user');
 const indexRouter = require('./routes/index');
 
 const app = express();
@@ -50,7 +51,7 @@ sequelize.sync()
     console.log(result);
   })
   .catch(error => {
-    console.log(error);
+    result.status(400).json({error: error})
   });
 
 module.exports = app;
