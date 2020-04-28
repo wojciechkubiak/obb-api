@@ -16,14 +16,15 @@ const WaterCtrl = require("../ctrl/water");
 const router = express.Router();
 
 const auth = (require, result, next) => {
-    const token = require.headers["Authorization"];
-    
-    if(!token) {
-        return result.status(401).send({Acces: `Denied ${token.token}`});
+    const header = require.headers["authorization"];
+    const token = require.token;
+
+    if(!header) {
+        return result.status(401).send({Acces: `Denied`});
     }
 
     try {
-        const data = jwt.verify(token.token, process.env.LOCAL_KEY || process.env.HR_KEY);
+        const data = jwt.verify(token, process.env.LOCAL_KEY || process.env.HR_KEY);
         require.user = data;
         next();
     } catch(e) {
