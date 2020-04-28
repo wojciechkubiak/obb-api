@@ -1,4 +1,6 @@
 const path = require("path");
+const jwt = require("jsonwebtoken");
+import 'dotenv/config';
 
 const express = require("express");
 
@@ -13,14 +15,30 @@ const WaterCtrl = require("../ctrl/water");
 
 const router = express.Router();
 
+const auth = (require, result, next) => {
+    const token = require.headers["Authorization"];
+    
+    if(!token) {
+        return result.status(401).send('Acces denied');
+    }
+
+    try {
+        const data = jwt.verify(token, process.env.LOCAL_KEY || process.env.HR_KEY);
+        require.user = data;
+        next();
+    } catch(e) {
+        result.status(400).send(e);
+    }
+}
+
 router.post('/register', UserCtrl.registerUser);
 router.post('/login', UserCtrl.loginUser);
 
 router.get("/global", GlobalMeasuresCtrl.getGlobalMeasures);
 router.get("/global-latest", GlobalMeasuresCtrl.getLatestGlobalMeasures);
-router.post("/add-global", GlobalMeasuresCtrl.postAddGlobalMeasure);
-router.put("/edit-global/:id", GlobalMeasuresCtrl.postEditGlobalMeasure);
-router.delete("/delete-global/:id", GlobalMeasuresCtrl.deleteGlobalMeasure);
+router.post("/add-global", auth, GlobalMeasuresCtrl.postAddGlobalMeasure);
+router.put("/edit-global/:id", auth, GlobalMeasuresCtrl.postEditGlobalMeasure);
+router.delete("/delete-global/:id", auth, GlobalMeasuresCtrl.deleteGlobalMeasure);
 
 router.get("/pens", PensCtrl.getPens);
 router.get("/pens/:id", PensCtrl.getSinglePen);
