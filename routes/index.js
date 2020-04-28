@@ -23,6 +23,7 @@ const auth = (require, result, next) => {
         return result.status(401).send({Acces: `Denied`});
     }
 
+    console.log(token);
     try {
         const data = jwt.verify(token, process.env.LOCAL_KEY || process.env.HR_KEY);
         require.user = data;
