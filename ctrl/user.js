@@ -46,7 +46,8 @@ exports.loginUser = (require, result, next) => {
                 let token = jwt.sign(user.dataValues, process.env.LOCAL_KEY || process.env.HR_KEY, {
                     expiresIn: 1440
                 })
-                result.send(token);
+                result.json({token: token})
+                // result.send(token);
             } else {
                 result.status(400).json({error: "Wrong password"})
             }
