@@ -19,7 +19,7 @@ const auth = (require, result, next) => {
     const token = require.headers["Authorization"];
     
     if(!token) {
-        return result.status(401).send({Acces: `Denied ${token}`});
+        return result.status(401).send({Acces: `Denied ${token.token}`});
     }
 
     try {
