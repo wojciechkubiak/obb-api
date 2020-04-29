@@ -15,6 +15,14 @@ exports.getDeadPigs = (require, result, next) => {
   Pigs.findAll(
     {
     order: [["pigDeathDate", "DESC"]],
+    attributes: [
+      "idPen",
+      "id",
+      "pigGender",
+      "pigShoppingDate",
+      "pigShoppingPrice",
+      "pigDeathDate"
+    ],
     where: {
       pigDeathDate: {
         [Op.ne]: null,
@@ -32,14 +40,6 @@ exports.getDeadPigs = (require, result, next) => {
 exports.getDeadPigsLimited = (require, result, next) => {
   Pigs.findAll({
     limit: 25,
-    attributes: [
-      "idPen",
-      "id",
-      "pigGender",
-      "pigShoppingDate",
-      "pigShoppingPrice",
-      "pigDeathDate"
-    ],
     order: [["pigDeathDate", "DESC"]],
     where: {
       pigDeathDate: {
