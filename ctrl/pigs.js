@@ -33,6 +33,7 @@ exports.getDeadPigsLimited = (require, result, next) => {
   Pigs.findAll({
     limit: 25,
     attributes: [
+      "idPen",
       "id",
       "pigGender",
       "pigShoppingDate",
