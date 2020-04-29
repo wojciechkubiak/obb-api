@@ -13,6 +13,15 @@ exports.getPigs = (require, result, next) => {
 
 exports.getDeadPigs = (require, result, next) => {
   Pigs.findAll({
+    attributes: [
+      "id",
+      "pigGender",
+      "pigShoppingDate",
+      "pigShoppingPrice",
+      "pigDeathDate"
+    ]
+  },
+    {
     order: [["pigDeathDate", "DESC"]],
     where: {
       pigDeathDate: {
@@ -30,6 +39,14 @@ exports.getDeadPigs = (require, result, next) => {
 
 exports.getDeadPigsLimited = (require, result, next) => {
   Pigs.findAll({
+    attributes: [
+      "id",
+      "pigGender",
+      "pigShoppingDate",
+      "pigShoppingPrice",
+      "pigDeathDate"
+    ]
+  },{
     limit: 25,
     order: [["pigDeathDate", "DESC"]],
     where: {
@@ -48,6 +65,15 @@ exports.getDeadPigsLimited = (require, result, next) => {
 
 exports.getSoldPigs = (require, result, next) => {
   Pigs.findAll({
+    attributes: [
+      "id",
+      "pigGender",
+      "pigShoppingDate",
+      "pigShoppingPrice",
+      "pigSaleDate",
+      "pigSellingCost"
+    ]
+  }, {
     order: [["pigSaleDate", "DESC"]],
     where: {
       pigSaleDate: {
@@ -65,6 +91,15 @@ exports.getSoldPigs = (require, result, next) => {
 
 exports.getSoldPigsLimited = (require, result, next) => {
   Pigs.findAll({
+    attributes: [
+      "id",
+      "pigGender",
+      "pigShoppingDate",
+      "pigShoppingPrice",
+      "pigSaleDate",
+      "pigSellingCost"
+    ]
+  },{
     limit: 25,
     order: [["pigSaleDate", "DESC"]],
     where: {

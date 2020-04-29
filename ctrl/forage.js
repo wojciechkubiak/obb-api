@@ -3,7 +3,19 @@ const Forage = require("../models/forage");
 exports.getForageData = (require, result, next) => {
   const id = parseInt(require.params.id);
 
-  Forage.findAll({
+  Forage.findAll( {
+    attributes: [
+      "idPen",
+      "fgAbout",
+      "fgQty", 
+      "fgPrice",
+      "creationDate",
+      "producer",
+      "expiration"
+    ]
+  }
+    
+    ,{
       where: {
         idPen: id
       }

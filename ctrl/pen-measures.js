@@ -1,7 +1,17 @@
 const PenMeasures = require('../models/pen-measures');
 
 exports.getAllPenMeasures = (require, result, next) => {
-  PenMeasures.findAll()
+  PenMeasures.findAll({
+    attributes: [
+      "measureDate",
+      "measureTime",
+      "breakdown",
+      "dosatron",
+      "addition",
+      "forage",
+      "forageQtyUsed"
+    ]
+  })
     .then(measures => {
       result.status(200).json(measures);
     })

@@ -2,6 +2,17 @@ const GlobalMeasures = require("../models/global");
 
 exports.getGlobalMeasures = (require, result, next) => {
   GlobalMeasures.findAll({
+    attributes: [
+      "measureDate",
+      "measureTime",
+      "nhThree",
+      "hTwoS",
+      "coTwo",
+      "temperature",
+      "wetness"
+    ]
+  },
+    {
       order: [
         ["measureDate", "DESC"]
       ]
