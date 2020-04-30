@@ -6,10 +6,20 @@ const {
 
 //TODO: Change into 1 for every forage
 exports.getLastWaterData = (require, result, next) => {
+  const id = parseInt(require.params.id);
+
   Water.findAll({
       limit: 1,
       order: [
-        ["createdAt", "DESC"]
+        ["measureDate", "DESC"]
+      ],
+      attributes: [
+        "idPen",
+        "id",
+        "measureDate",
+        "measureTime",
+        "waterInit",
+        "waterUsed"
       ],
       where: {
         idPen: id
@@ -27,6 +37,16 @@ exports.getAllWaterData = (require, result, next) => {
   const id = parseInt(require.params.id);
 
   Water.findAll({
+      order: [
+        ["measureDate", "DESC"]
+      ],
+      attributes: [
+        "idPen",
+        "measureDate",
+        "measureTime",
+        "waterInit",
+        "waterUsed"
+      ],
       where: {
         idPen: id
       }

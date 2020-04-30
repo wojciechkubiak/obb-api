@@ -14,7 +14,6 @@ exports.getForageData = (require, result, next) => {
       "expiration"
     ]
   }
-    
     ,{
       where: {
         idPen: id

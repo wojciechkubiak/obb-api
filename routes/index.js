@@ -96,7 +96,7 @@ router.put("/exams-edit-lameness/:id", auth, ExamsCtrl.postEditExamLameness);
 router.put("/exams-edit-respiratorysys/:id", auth, ExamsCtrl.postEditExamRespiratorySys);
 router.put("/exams-edit-skinchanges/:id", auth, ExamsCtrl.postEditExamSkinChanges);
 
-router.get("/water-feach-pen/:id", WaterCtrl.getLastWaterData);
+router.get("/water-last/:id", WaterCtrl.getLastWaterData);
 router.get("/water-pen/:id", WaterCtrl.getAllWaterData);
 // TODO: router.get("/water-feach-pen-last/:id", WaterCtrl.getLastWaterDataForAllPens);
 router.post("/water-add", auth, WaterCtrl.postWaterEntry);
