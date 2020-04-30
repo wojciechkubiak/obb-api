@@ -3,8 +3,8 @@ const {
   Op
 } = require("sequelize");
 
-//TODO: POST DOESNT WORK
 
+//TODO: Change into 1 for every forage
 exports.getLastWaterData = (require, result, next) => {
   Water.findAll({
       limit: 1,
@@ -42,7 +42,7 @@ exports.getAllWaterData = (require, result, next) => {
 // TODO: exports.getLastWaterDataForAllPens last for all pens
 
 exports.postWaterEntry = (require, result, next) => {
-  const id = parseIntrequire.params.idPen;
+  const id = parseInt(require.params.idPen);
   const newMeasureDate = require.body.measureDate;
   const newMeasureTime = require.body.measureTime;
   const newWater = require.body.waterInit;
