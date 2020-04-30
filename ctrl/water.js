@@ -62,7 +62,7 @@ exports.getAllWaterData = (require, result, next) => {
 // TODO: exports.getLastWaterDataForAllPens last for all pens
 
 exports.postWaterEntry = (require, result, next) => {
-  const id = parseInt(require.params.idPen);
+  const id = require.body.idPen;
   const newMeasureDate = require.body.measureDate;
   const newMeasureTime = require.body.measureTime;
   const newWater = require.body.waterInit;
