@@ -1,57 +1,59 @@
-# OBB REST API
+<h1 align="center">OBB-Sys</h1>
+<p align="center">Vet web application</p>
+<p align="center">
+  <img src="https://github.com/wojciechkubiak/obb-api/blob/master/OBB.png?raw=true"/>
+</p>
 
-### Must have:
-1. [Download](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) PostgreSQL 
+<p align="center">
+  <img src="https://img.shields.io/badge/Made%20by-wojciechkubiak-blue"/>
+  <img src="https://img.shields.io/website?url=https%3A%2F%2Fopqn.netlify.app"/>
+  <img src="https://img.shields.io/netlify/9b34eab0-858b-4f92-863f-29b5350b9465"/>
+  <img src="https://img.shields.io/badge/react-16.13.1-informational"/>
+  <img src="https://img.shields.io/badge/typescript-3.8.3-informational"/>
+</p>
 
-    [Linux Debian/Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04)\
-    [Linux Arch](https://linuxhint.com/install-postgresql-10-arch-linux/)\
-    [Linux Fedora](https://computingforgeeks.com/how-to-install-postgresql-on-fedora/)\
-    [Linux SUSE](https://www.osradar.com/postgresql-opensuse-15/)
-2. [Download](https://nodejs.org/en/download/) NodeJS (LTS) 
-### How to:
-1. Install dependencies using command\
-    ``` npm install ```
-2. Run API\
-    ``` npm start ```
-### Routes
 
-1. Global measures\
-    ```[GET] /global ```\
-    ```[GET] /global-latest ```\
-    ```[POST] /add-global ```\
-    ```[PUT] /edit-global/[id] ```\
-    ```[DELETE] /delete-global/[id] ```
-2. Pens\
-    ```[GET] /pens ```\
-    ```[GET] /pens-isolated ```
-3. Pen measures\
-    ```[GET] /pen-measures ```\
-    ```[GET] /pen-measures/[id] ```\
-    ```[POST] /add-pen-measure ```\
-    ```[PUT] /edit-pen-measure/[id] ```\
-    ```[DELETE] /delete-pen-measure/[id] ```
-4. Forage\
-    ```[GET] /forage/[id] ```\
-    ```[POST] /add-forage ```\
-    ```[PUT] /edit-forage/[id] ```\
-    ```[DELETE] /delete-forage/[id] ```
-5. Water\
-    ```[GET] /water-feach-pen/[id] ```\
-    ```[GET] /water-pen/[id] ```\
-    ```[POST] /water-add ```\
-    ```[PUT] /water-edit/[id] ```\
-    ```[DELETE] /water-delete/[id] ```
-6. Pigs\
-    ```[GET] /pigs ```\
-    ```[GET] /active-pigs/[id] ```\
-    ```[GET] /out-pigs ```\
-    ```[POST] /add-pig ```\
-    ```[PUT] /edit-pig/[id] ```\
-    ```[PUT] /pig-sold/[id] ```\
-    ```[PUT] /pig-dead/[id] ```
-7. Exams\
-    ```[GET] /exam/[id] ```\
-    ```[GET] /exams-pig/[id] ```\
-    ```[POST] /add-exam ```\
-    ```[PUT] /edit-exam/[id] ```\
-    ```[DELETE] /delete-exam/[id] ```
+## Technologies used
+* NodeJS / ExpressJS
+* Sequelize
+* JWT
+
+## What this app is about
+
+This application allows vet to store and modify animal research data. It's main purpose is to replace spreadsheets and store data in the cloud. Additionally, the application has an authentication system ensuring data protection, the ability to generate PDF and possibility to check data on the interactive charts.
+
+## How can I install this app
+
+In case you want to use it locally, all you have to do is to install current LTS version of [NodeJS](https://nodejs.org/en/) and [PostgreSQL](https://www.postgresql.org/download/), then follow 4 steps:
+
+* ### `npm install`
+
+Installs all dependencies needed to run API. <br />In case of outdated dependencies, try to run `npm audit fix`. <br />I'm trying to fix such things as fast as possible, but sometimes it just takes a while. 
+<br />Most of times app is going to work even after error messages calling to use `audit` option <br />(not the ones that say you couldn't install dependencies - in case of such errors, check your internet connection). 
+
+* ### Create database
+
+As next step, you have to create PostgreSQL database. <br />
+[For Windows Users](https://doc.odoo.com/install/windows/postgres)
+
+* ### Set environment variables
+
+Next you have to set [environment variables](https://www.npmjs.com/package/dotenv) by creating .env file in root folder. In this file you have to specify four variables called:
+* LOCAL_NAME - database name
+* LOCAL_HOST - host (default "5432")
+* LOCAL_USER - user with privileges to modify data
+* LOCAL_PASS - user password
+
+* ### `npm start`
+
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
+
+## More about ReactJS
+
+In case of my tips being unclear, check official React site [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
